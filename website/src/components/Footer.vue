@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import externalLinkIcon from "../assets/external-link.svg";
 </script>
 
@@ -7,6 +8,9 @@ import externalLinkIcon from "../assets/external-link.svg";
     <div class="wrap site-footer__inner">
       <p>Open Source Accessibility Framework. Licensed MIT.</p>
       <ul class="site-footer__list" role="list">
+        <li>
+          <RouterLink to="/talking-points">Talking points</RouterLink>
+        </li>
         <li>
           <a
             href="https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework"
@@ -17,8 +21,7 @@ import externalLinkIcon from "../assets/external-link.svg";
               class="external-link-icon"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
         <li>
           <a
@@ -30,8 +33,7 @@ import externalLinkIcon from "../assets/external-link.svg";
               class="external-link-icon"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
         <li>
           <a
@@ -43,8 +45,7 @@ import externalLinkIcon from "../assets/external-link.svg";
               class="external-link-icon"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
       </ul>
     </div>

@@ -20,6 +20,7 @@ const contentRoutes: Record<string, string> = {
   "testing-phase.md": "testing",
   "workflow-phase.md": "workflow",
   "guide.md": "ai",
+  "talking-points.md": "talking-points",
   "community-skills.md": "skills/community",
   "foundational-skills.md": "skills/foundational",
   "testing-skills.md": "skills/testing",
@@ -27,7 +28,7 @@ const contentRoutes: Record<string, string> = {
 };
 
 const githubContentLinkPattern =
-  /^(?:\/?framework\/(?:phases|ai(?:\/skills)?)\/|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/(?:phases|ai(?:\/skills)?)\/)([^/?#]+\.md)([?#].*)?$/;
+  /^(?:\/?framework\/(?:phases|ai(?:\/skills)?)\/|\/?framework\/supporting\/(?=talking-points\.md)|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/(?:phases|ai(?:\/skills)?)\/|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/supporting\/(?=talking-points\.md))([^/?#]+\.md)([?#].*)?$/;
 
 const githubSupportingLinkPattern =
   /^https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/supporting\/.+\.md(?:[?#].*)?$/;
@@ -116,9 +117,9 @@ function rewriteMarkdownLink(href: string, sourcePath: string): string {
   }
 
   const contentMatch = repositoryPath.match(
-    /^framework\/(?:phases|ai(?:\/skills)?)\/([^/]+\.md)$/,
+    /^framework\/(?:(?:phases|ai(?:\/skills)?)\/([^/]+\.md)|supporting\/(talking-points\.md))$/,
   );
-  const contentFilename = contentMatch?.[1];
+  const contentFilename = contentMatch?.[1] ?? contentMatch?.[2];
   if (contentFilename) {
     return websiteContentLink(contentFilename, match[2]) ?? href;
   }

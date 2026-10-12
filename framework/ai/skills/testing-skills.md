@@ -22,7 +22,7 @@ name: testing-phase
 description: "Implements all Testing Phase actions or selected actions by number, title, or ID, with bundled offline requirements."
 metadata:
   framework-phase-id: testing
-  framework-bundle-digest: "5eafcc2464e3"
+  framework-bundle-digest: "df32cbd6fc8f"
   framework-source-ref: main
   framework-source: "https://raw.githubusercontent.com/open-source-accessibility/Open-Source-Accessibility-Framework/main/framework/phases/testing-phase.md"
 ---

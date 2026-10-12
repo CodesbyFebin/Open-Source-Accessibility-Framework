@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Community Phase, Action 6](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md#6-share-accessibility-resources)
 
-## Why it matters
+## Why It Matters
 
 Sharing accessibility resources, solutions, and lessons learned helps other projects improve faster. Documenting both successes and failures enables communities to build on proven practices and avoid repeating mistakes.
 
-## Definition of done
+## Definition of Done
 
 1. Useful accessibility resources are made publicly available.
 2. Resources include enough context for another project to use them.

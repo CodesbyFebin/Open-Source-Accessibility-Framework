@@ -4,7 +4,7 @@ The foundational phase establishes the basic practices a project needs to make a
 
 This phase is intentionally practical. Projects do not need to solve every accessibility issue before getting started. Instead, they create the documentation, communication channels, and tracking practices that support continuous improvement and public accountability. Completing these actions provides a shared baseline for the more detailed accessibility work that follows.
 
-## Phase overview
+## Phase Overview
 
 This phase has **2 total actions** with **4 total tasks** to complete.
 
@@ -21,15 +21,15 @@ Cadence describes how an action continues after its initial completion: **One-ti
 
 [Join the community by registering your project!](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) Your registration issue makes your progress visible alongside other projects using the framework, creating opportunities to share experience, offer mentorship, ask for help, and learn from one another.
 
-## Foundational actions
+## Foundational Actions
 
 ### 1. Create an ACCESSIBILITY.md
 
-#### Why it matters
+#### Why It Matters
 
 This action gives users and contributors a clear place to find accessibility information and report barriers.
 
-#### Definition of done
+#### Definition of Done
 
 1. An `ACCESSIBILITY.md` exists in the repository.
 2. The file includes a brief statement describing why accessibility matters to your project.
@@ -45,11 +45,11 @@ This action gives users and contributors a clear place to find accessibility inf
 
 ### 2. Use an accessibility label to track relevant work
 
-#### Why it matters
+#### Why It Matters
 
 This action makes accessibility work visible, searchable, and trackable.
 
-#### Definition of done
+#### Definition of Done
 
 1. An `accessibility` label, or an equivalent label with a clear name, exists.
 2. The label is applied to the project’s relevant open tracking issues.

@@ -4,7 +4,7 @@ The workflow phase integrates accessibility into the everyday practices that sha
 
 The goal is to make accessible practice repeatable across the project, even as contributors, dependencies, and priorities change. Projects establish clear expectations, assign ownership, identify risks, and create lightweight review and triage processes that help prevent new barriers while making existing barriers easier to prioritize and resolve. These practices create the operational foundation for sustained accessibility improvement.
 
-## Phase overview
+## Phase Overview
 
 This phase has **10 total actions** with **27 total tasks** to complete.
 
@@ -29,15 +29,15 @@ Cadence describes how an action continues after its initial completion: **One-ti
 
 [Join the community by registering your project!](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) Your registration issue makes your progress visible alongside other projects using the framework, creating opportunities to share experience, offer mentorship, ask for help, and learn from one another.
 
-## Workflow actions
+## Workflow Actions
 
 ### 1. Surface accessibility expectations for contributors
 
-#### Why it matters
+#### Why It Matters
 
 This action communicates the project’s accessibility priorities and sets clear expectations for contributors.
 
-#### Definition of done
+#### Definition of Done
 
 1. The project’s `ACCESSIBILITY.md` includes a "Priorities" section describing its accessibility goals and areas of focus.
 2. The project’s `ACCESSIBILITY.md` includes a "Contributor expectations" section describing the accessibility requirements for contributions.
@@ -56,11 +56,11 @@ This action communicates the project’s accessibility priorities and sets clear
 
 ### 2. Create an accessible path for reporting accessibility bugs
 
-#### Why it matters
+#### Why It Matters
 
 A clear, accessible reporting path improves report quality and supports consistent triage.
 
-#### Definition of done
+#### Definition of Done
 
 1. The project documents an accessible way to report accessibility bugs.
 2. Submitted accessibility reports follow a documented triage and response process.
@@ -75,11 +75,11 @@ A clear, accessible reporting path improves report quality and supports consiste
 
 ### 3. Establish a simple accessibility triage approach
 
-#### Why it matters
+#### Why It Matters
 
 This action gives people a clear way to report accessibility barriers and helps maintainers assess, prioritize, and respond to them consistently.
 
-#### Definition of done
+#### Definition of Done
 
 1. The `ACCESSIBILITY.md` explains how to report an accessibility barrier and what information is helpful to include.
 2. Severity categories describe how strongly a barrier affects a person’s ability to complete a task.
@@ -98,11 +98,11 @@ This action gives people a clear way to report accessibility barriers and helps 
 
 ### 4. Add an accessibility section to the pull request template
 
-#### Why it matters
+#### Why It Matters
 
 This action makes accessibility a consistent part of the review process.
 
-#### Definition of done
+#### Definition of Done
 
 1. The pull request template includes an accessibility section.
 2. The checklist covers the project’s relevant accessibility requirements.
@@ -118,11 +118,11 @@ This action makes accessibility a consistent part of the review process.
 
 ### 5. Tag beginner-friendly accessibility issues
 
-#### Why it matters
+#### Why It Matters
 
 This action makes contribution easier to start.
 
-#### Definition of done
+#### Definition of Done
 
 1. Beginner-friendly accessibility issues are clearly labeled using both `good first issue` and `accessibility`, or another clearly understood equivalent, labels.
 2. Each selected issue has a clear scope and contribution context.
@@ -135,11 +135,11 @@ This action makes contribution easier to start.
 
 ### 6. Tag accessibility issues where you need expert help
 
-#### Why it matters
+#### Why It Matters
 
 This action makes contribution easier to start.
 
-#### Definition of done
+#### Definition of Done
 
 1. Accessibility issues where expert help is needed are clearly labeled with `help wanted` and `accessibility`, or another clearly understood equivalent, labels.
 2. Each selected issue has a clear scope and contribution context.
@@ -152,11 +152,11 @@ This action makes contribution easier to start.
 
 ### 7. Assign accessibility ownership
 
-#### Why it matters
+#### Why It Matters
 
 This action prevents drift.
 
-#### Definition of done
+#### Definition of Done
 
 1. The `ACCESSIBILITY.md` identifies an accessibility owner.
 2. Responsibilities are documented.
@@ -169,11 +169,11 @@ This action prevents drift.
 
 ### 8. Make docs accessible by default
 
-#### Why it matters
+#### Why It Matters
 
 This action makes project information usable for everyone.
 
-#### Definition of done
+#### Definition of Done
 
 1. Documentation uses meaningful structure and semantics (e.g. headings, lists).
 2. Images, diagrams, and videos have appropriate alternatives or supporting text.
@@ -187,11 +187,11 @@ This action makes project information usable for everyone.
 
 ### 9. Design accessible interfaces
 
-#### Why it matters
+#### Why It Matters
 
 This action helps prevent common accessibility issues from being introduced in the first place, reducing rework and improving usability for everyone.
 
-#### Definition of done
+#### Definition of Done
 
 1. Project-relevant interface requirements are documented.
 2. New and updated interfaces are reviewed against those requirements.
@@ -205,11 +205,11 @@ This action helps prevent common accessibility issues from being introduced in t
 
 ### 10. Evaluate key dependencies and upstream blockers
 
-#### Why it matters
+#### Why It Matters
 
 This action helps projects manage accessibility risks they do not fully control.
 
-#### Definition of done
+#### Definition of Done
 
 1. Accessibility-relevant dependencies are documented.
 2. The accessibility of new dependencies is reviewed before they are adopted.

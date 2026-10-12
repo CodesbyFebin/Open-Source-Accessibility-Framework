@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Testing Phase, Action 4](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#4-perform-manual-accessibility-checks)
 
-## Why it matters
+## Why It Matters
 
 This action addresses common visual access barriers.
 
-## Definition of done
+## Definition of Done
 
 1. Relevant interfaces have documented zoom, resize, reflow, and contrast checks.
 2. Information and functionality remain available at the tested settings.

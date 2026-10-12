@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Workflow Phase, Action 7](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#7-assign-accessibility-ownership)
 
-## Why it matters
+## Why It Matters
 
 This action prevents drift.
 
-## Definition of done
+## Definition of Done
 
 1. The `ACCESSIBILITY.md` identifies an accessibility owner.
 2. Responsibilities are documented.

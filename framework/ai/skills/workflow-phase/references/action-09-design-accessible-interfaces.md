@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Workflow Phase, Action 9](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#9-design-accessible-interfaces)
 
-## Why it matters
+## Why It Matters
 
 This action helps prevent common accessibility issues from being introduced in the first place, reducing rework and improving usability for everyone.
 
-## Definition of done
+## Definition of Done
 
 1. Project-relevant interface requirements are documented.
 2. New and updated interfaces are reviewed against those requirements.

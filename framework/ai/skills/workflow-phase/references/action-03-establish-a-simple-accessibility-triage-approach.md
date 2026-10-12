@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Workflow Phase, Action 3](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#3-establish-a-simple-accessibility-triage-approach)
 
-## Why it matters
+## Why It Matters
 
 This action gives people a clear way to report accessibility barriers and helps maintainers assess, prioritize, and respond to them consistently.
 
-## Definition of done
+## Definition of Done
 
 1. The `ACCESSIBILITY.md` explains how to report an accessibility barrier and what information is helpful to include.
 2. Severity categories describe how strongly a barrier affects a person’s ability to complete a task.

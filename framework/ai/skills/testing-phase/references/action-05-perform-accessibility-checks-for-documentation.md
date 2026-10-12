@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Testing Phase, Action 5](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#5-perform-accessibility-checks-for-documentation)
 
-## Why it matters
+## Why It Matters
 
 This action improves the first experience many users have.
 
-## Definition of done
+## Definition of Done
 
 1. Documentation checks cover structure, alternatives, links, captions, tables, and code blocks.
 2. Representative documentation has been reviewed.

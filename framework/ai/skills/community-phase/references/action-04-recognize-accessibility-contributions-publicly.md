@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Community Phase, Action 4](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md#4-recognize-accessibility-contributions-publicly)
 
-## Why it matters
+## Why It Matters
 
 Public recognition shows that accessibility work, including contributions beyond source code, is valued.
 
-## Definition of done
+## Definition of Done
 
 1. Recognition respects contributor preferences and protects personal information.
 2. Accessibility contributions are publicly recognized with the contributor's consent.

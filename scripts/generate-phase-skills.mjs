@@ -12,7 +12,7 @@ const phaseConfigs = [
   {
     id: "foundational",
     title: "Foundational",
-    actionsHeading: "Foundational actions",
+    actionsHeading: "Foundational Actions",
     source: "framework/phases/foundational-phase.md",
     landingPage: "foundational-skills.md",
     examples: [
@@ -27,7 +27,7 @@ const phaseConfigs = [
   {
     id: "workflow",
     title: "Workflow",
-    actionsHeading: "Workflow actions",
+    actionsHeading: "Workflow Actions",
     source: "framework/phases/workflow-phase.md",
     landingPage: "workflow-skills.md",
     examples: [
@@ -43,7 +43,7 @@ const phaseConfigs = [
   {
     id: "testing",
     title: "Testing",
-    actionsHeading: "Testing actions",
+    actionsHeading: "Testing Actions",
     source: "framework/phases/testing-phase.md",
     landingPage: "testing-skills.md",
     examples: [
@@ -59,7 +59,7 @@ const phaseConfigs = [
   {
     id: "community",
     title: "Community",
-    actionsHeading: "Community actions",
+    actionsHeading: "Community Actions",
     source: "framework/phases/community-phase.md",
     landingPage: "community-skills.md",
     examples: [
@@ -151,8 +151,8 @@ function extractSection(section, heading, nextHeading) {
 // Expected shape of a phase document, which the asserts below enforce:
 //   - an overview table whose rows start with "| [Action N](...) |", where
 //     the second cell is the task count and the last cell is the cadence;
-//   - a "## <Phase> actions" heading, followed by one "### N. Title" per action;
-//   - inside each action, a "#### Definition of done" numbered list and a
+//   - a "## <Phase> Actions" heading, followed by one "### N. Title" per action;
+//   - inside each action, a "#### Definition of Done" numbered list and a
 //     "#### Recommended Steps" section, in that order.
 function parseActions(markdown, config) {
   const actionStart = markdown.indexOf(`## ${config.actionsHeading}`);
@@ -172,7 +172,7 @@ function parseActions(markdown, config) {
     const section = actionMarkdown.slice(start, end).trim();
     const definition = extractSection(
       section,
-      "Definition of done",
+      "Definition of Done",
       "Recommended Steps",
     );
     const recommendedSteps = extractSection(section, "Recommended Steps");

@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Community Phase, Action 5](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md#5-publish-accessibility-progress-updates)
 
-## Why it matters
+## Why It Matters
 
 Public progress updates build trust and accountability by showing that accessibility reports lead to action, highlighting work that still needs attention, and reducing duplicated effort.
 
-## Definition of done
+## Definition of Done
 
 1. Accessibility progress is published through at least one public project channel.
 2. Updates include completed work, remaining work, known barriers or limitations, and relevant links.

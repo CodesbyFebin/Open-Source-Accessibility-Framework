@@ -1,6 +1,6 @@
 # Community Phase skill references
 
-- **Bundled content digest:** `48d5b02550d3`
+- **Bundled content digest:** `4cb34825fd38`
 - **Canonical phase:** [framework/phases/community-phase.md](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md)
 
 Load only the references needed for the user's selected actions.

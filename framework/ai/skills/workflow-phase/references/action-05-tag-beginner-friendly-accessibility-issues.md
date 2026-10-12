@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Workflow Phase, Action 5](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#5-tag-beginner-friendly-accessibility-issues)
 
-## Why it matters
+## Why It Matters
 
 This action makes contribution easier to start.
 
-## Definition of done
+## Definition of Done
 
 1. Beginner-friendly accessibility issues are clearly labeled using both `good first issue` and `accessibility`, or another clearly understood equivalent, labels.
 2. Each selected issue has a clear scope and contribution context.

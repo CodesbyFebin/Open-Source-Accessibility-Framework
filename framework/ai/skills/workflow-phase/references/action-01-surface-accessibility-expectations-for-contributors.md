@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Workflow Phase, Action 1](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#1-surface-accessibility-expectations-for-contributors)
 
-## Why it matters
+## Why It Matters
 
 This action communicates the project’s accessibility priorities and sets clear expectations for contributors.
 
-## Definition of done
+## Definition of Done
 
 1. The project’s `ACCESSIBILITY.md` includes a "Priorities" section describing its accessibility goals and areas of focus.
 2. The project’s `ACCESSIBILITY.md` includes a "Contributor expectations" section describing the accessibility requirements for contributions.

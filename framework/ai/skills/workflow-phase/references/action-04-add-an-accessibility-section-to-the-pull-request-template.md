@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Workflow Phase, Action 4](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#4-add-an-accessibility-section-to-the-pull-request-template)
 
-## Why it matters
+## Why It Matters
 
 This action makes accessibility a consistent part of the review process.
 
-## Definition of done
+## Definition of Done
 
 1. The pull request template includes an accessibility section.
 2. The checklist covers the project’s relevant accessibility requirements.

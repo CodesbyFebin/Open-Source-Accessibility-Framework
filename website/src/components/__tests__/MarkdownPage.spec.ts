@@ -49,7 +49,15 @@ describe("MarkdownPage", () => {
     expect(link.attributes("target")).toBe("_blank");
     expect(link.attributes("rel")).toBe("noopener noreferrer");
     expect(link.text()).toBe("docs");
-    expect(link.find("img").attributes("alt")).toBe("opens external page");
+    const externalLinkIcons = link.findAll("img");
+    expect(externalLinkIcons).toHaveLength(2);
+    expect(externalLinkIcons[0]?.classes()).toContain("theme-image--light");
+    expect(externalLinkIcons[1]?.classes()).toContain("theme-image--dark");
+    expect(
+      externalLinkIcons.every(
+        (icon) => icon.attributes("alt") === "opens external page",
+      ),
+    ).toBe(true);
 
     const listItem = wrapper.find(".markdown-page__content li");
     expect(listItem.exists()).toBe(true);

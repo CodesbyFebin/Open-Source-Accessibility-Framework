@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import logo from "../assets/logo.svg";
+import logoBlack from "../assets/logo-black.svg";
 
 const menuOpen = ref(false);
 const menuButton = ref<HTMLButtonElement>();
@@ -20,12 +21,17 @@ function closeMenuAndRestoreFocus() {
 <template>
   <header class="masthead" @keydown.esc="closeMenuAndRestoreFocus">
     <div class="wrap masthead__inner">
-      <RouterLink
-        to="/"
-        class="masthead__mark"
-        @click="closeMenu"
-      >
-        <img class="masthead__mark__logo" :src="logo" alt="" />
+      <RouterLink to="/" class="masthead__mark" @click="closeMenu">
+        <img
+          class="masthead__mark__logo theme-image--light"
+          :src="logoBlack"
+          alt=""
+        />
+        <img
+          class="masthead__mark__logo theme-image--dark"
+          :src="logo"
+          alt=""
+        />
         <span class="masthead__mark__name">
           Open Source Accessibility Framework
         </span>

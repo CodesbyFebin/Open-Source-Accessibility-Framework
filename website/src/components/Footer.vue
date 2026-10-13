@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import externalLinkIcon from "../assets/external-link.svg";
+import externalLinkIconBlack from "../assets/external-link-black.svg";
 </script>
 
 <template>
@@ -18,7 +19,11 @@ import externalLinkIcon from "../assets/external-link.svg";
             rel="noopener noreferrer"
             >Repository
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
           /></a>
@@ -30,7 +35,11 @@ import externalLinkIcon from "../assets/external-link.svg";
             rel="noopener noreferrer"
             >Code of conduct
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
           /></a>
@@ -42,7 +51,11 @@ import externalLinkIcon from "../assets/external-link.svg";
             rel="noopener noreferrer"
             >Organization
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
           /></a>

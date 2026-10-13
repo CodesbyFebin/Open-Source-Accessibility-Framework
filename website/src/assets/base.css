@@ -126,6 +126,20 @@ a:hover {
   vertical-align: baseline;
 }
 
+.theme-image--dark {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-image--light {
+    display: none !important;
+  }
+
+  .theme-image--dark {
+    display: inline-block !important;
+  }
+}
+
 :focus-visible {
   outline: var(--line-focus) solid var(--color-focus);
   outline-offset: var(--space-3xs);
@@ -356,7 +370,7 @@ a:hover {
   color: var(--color-bold);
 }
 
-.markdown-page__content>*+* {
+.markdown-page__content > * + * {
   margin-top: var(--space-s);
 }
 

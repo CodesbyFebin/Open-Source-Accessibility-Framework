@@ -3,6 +3,7 @@ import { marked } from "marked";
 import { nextTick, onBeforeUnmount, ref, watch, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import externalLinkIcon from "../assets/external-link.svg";
+import externalLinkIconBlack from "../assets/external-link-black.svg";
 
 const props = defineProps<{
   markdown: string;
@@ -204,7 +205,7 @@ function createMarkdownRenderer(
       .replace("<a ", '<a target="_blank" rel="noopener noreferrer" ')
       .replace(
         "</a>",
-        ` <img class="external-link-icon" src="${externalLinkIcon}" alt="opens external page"></a>`,
+        ` <img class="external-link-icon theme-image--light" src="${externalLinkIconBlack}" alt="opens external page"><img class="external-link-icon theme-image--dark" src="${externalLinkIcon}" alt="opens external page"></a>`,
       );
   };
 

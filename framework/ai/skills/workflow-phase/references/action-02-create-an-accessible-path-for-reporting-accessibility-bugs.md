@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Workflow Phase, Action 2](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#2-create-an-accessible-path-for-reporting-accessibility-bugs)
 
-## Why it matters
+## Why It Matters
 
 A clear, accessible reporting path improves report quality and supports consistent triage.
 
-## Definition of done
+## Definition of Done
 
 1. The project documents an accessible way to report accessibility bugs.
 2. Submitted accessibility reports follow a documented triage and response process.

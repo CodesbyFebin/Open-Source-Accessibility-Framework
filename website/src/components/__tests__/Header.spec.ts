@@ -29,6 +29,18 @@ async function mountHeader() {
 }
 
 describe("Header mobile menu", () => {
+  it("provides light and dark masthead logo variants", async () => {
+    const wrapper = await mountHeader();
+    const logos = wrapper.findAll(".masthead__mark__logo");
+
+    expect(logos).toHaveLength(2);
+    expect(logos[0]?.classes()).toContain("theme-image--light");
+    expect(logos[1]?.classes()).toContain("theme-image--dark");
+    expect(logos.every((logo) => logo.attributes("alt") === "")).toBe(true);
+
+    wrapper.unmount();
+  });
+
   it("toggles the primary navigation from an accessible menu button", async () => {
     const wrapper = await mountHeader();
     const button = wrapper.get("button");

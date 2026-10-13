@@ -4,11 +4,11 @@
 - **Cadence:** One-time setup
 - **Canonical source:** [Foundational Phase, Action 1](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/foundational-phase.md#1-create-an-accessibilitymd)
 
-## Why it matters
+## Why It Matters
 
 This action gives users and contributors a clear place to find accessibility information and report barriers.
 
-## Definition of done
+## Definition of Done
 
 1. An `ACCESSIBILITY.md` exists in the repository.
 2. The file includes a brief statement describing why accessibility matters to your project.

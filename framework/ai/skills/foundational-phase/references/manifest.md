@@ -1,6 +1,6 @@
 # Foundational Phase skill references
 
-- **Bundled content digest:** `96ebaeccd787`
+- **Bundled content digest:** `f2c741af5042`
 - **Canonical phase:** [framework/phases/foundational-phase.md](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/foundational-phase.md)
 
 Load only the references needed for the user's selected actions.

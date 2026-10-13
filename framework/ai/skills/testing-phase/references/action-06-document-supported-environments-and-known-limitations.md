@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Testing Phase, Action 6](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#6-document-supported-environments-and-known-limitations)
 
-## Why it matters
+## Why It Matters
 
 This action sets transparent expectations about where the project has been evaluated and helps people understand known accessibility barriers and available alternatives.
 
-## Definition of done
+## Definition of Done
 
 1. The `ACCESSIBILITY.md` identifies supported or tested platforms, devices, browsers, input methods, and assistive technologies.
 2. Known accessibility limitations are described in terms of their effect on users, with workarounds, equivalent access, and links to tracked issues where available.

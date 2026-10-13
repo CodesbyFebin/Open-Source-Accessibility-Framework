@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Foundational Phase, Action 2](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/foundational-phase.md#2-use-an-accessibility-label-to-track-relevant-work)
 
-## Why it matters
+## Why It Matters
 
 This action makes accessibility work visible, searchable, and trackable.
 
-## Definition of done
+## Definition of Done
 
 1. An `accessibility` label, or an equivalent label with a clear name, exists.
 2. The label is applied to the project’s relevant open tracking issues.

@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Testing Phase, Action 3](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#3-perform-a-screen-reader-spot-check-for-core-flows)
 
-## Why it matters
+## Why It Matters
 
 This action validates real usability beyond automation.
 
-## Definition of done
+## Definition of Done
 
 1. Key tasks have documented screen reader checks.
 2. The test environment is recorded.

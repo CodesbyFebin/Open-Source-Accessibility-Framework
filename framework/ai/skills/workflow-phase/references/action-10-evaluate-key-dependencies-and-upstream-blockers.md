@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Workflow Phase, Action 10](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md#10-evaluate-key-dependencies-and-upstream-blockers)
 
-## Why it matters
+## Why It Matters
 
 This action helps projects manage accessibility risks they do not fully control.
 
-## Definition of done
+## Definition of Done
 
 1. Accessibility-relevant dependencies are documented.
 2. The accessibility of new dependencies is reviewed before they are adopted.

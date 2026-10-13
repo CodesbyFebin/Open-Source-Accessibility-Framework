@@ -3,6 +3,7 @@ import { marked } from "marked";
 import { nextTick, onBeforeUnmount, ref, watch, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import externalLinkIcon from "../assets/external-link.svg";
+import externalLinkIconBlack from "../assets/external-link-black.svg";
 
 const props = defineProps<{
   markdown: string;
@@ -20,6 +21,7 @@ const contentRoutes: Record<string, string> = {
   "testing-phase.md": "testing",
   "workflow-phase.md": "workflow",
   "guide.md": "ai",
+  "talking-points.md": "talking-points",
   "community-skills.md": "skills/community",
   "foundational-skills.md": "skills/foundational",
   "testing-skills.md": "skills/testing",
@@ -27,7 +29,7 @@ const contentRoutes: Record<string, string> = {
 };
 
 const githubContentLinkPattern =
-  /^(?:\/?framework\/(?:phases|ai(?:\/skills)?)\/|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/(?:phases|ai(?:\/skills)?)\/)([^/?#]+\.md)([?#].*)?$/;
+  /^(?:\/?framework\/(?:phases|ai(?:\/skills)?)\/|\/?framework\/supporting\/(?=talking-points\.md)|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/(?:phases|ai(?:\/skills)?)\/|https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/supporting\/(?=talking-points\.md))([^/?#]+\.md)([?#].*)?$/;
 
 const githubSupportingLinkPattern =
   /^https:\/\/github\.com\/open-source-accessibility\/Open-Source-Accessibility-Framework\/blob\/.+?\/framework\/supporting\/.+\.md(?:[?#].*)?$/;
@@ -116,9 +118,9 @@ function rewriteMarkdownLink(href: string, sourcePath: string): string {
   }
 
   const contentMatch = repositoryPath.match(
-    /^framework\/(?:phases|ai(?:\/skills)?)\/([^/]+\.md)$/,
+    /^framework\/(?:(?:phases|ai(?:\/skills)?)\/([^/]+\.md)|supporting\/(talking-points\.md))$/,
   );
-  const contentFilename = contentMatch?.[1];
+  const contentFilename = contentMatch?.[1] ?? contentMatch?.[2];
   if (contentFilename) {
     return websiteContentLink(contentFilename, match[2]) ?? href;
   }
@@ -127,6 +129,27 @@ function rewriteMarkdownLink(href: string, sourcePath: string): string {
   return repositoryPath.startsWith("framework/supporting/")
     ? openInGitHubCodeView(repositoryUrl)
     : repositoryUrl;
+}
+
+function rewriteMarkdownImage(href: string, sourcePath: string): string {
+  if (href.startsWith("//") || /^[a-z][a-z\d+.-]*:/i.test(href)) {
+    return href;
+  }
+
+  const match = href.match(/^([^?#]+)([?#].*)?$/);
+  const hrefPath = match?.[1];
+  if (!hrefPath) {
+    return href;
+  }
+
+  const repositoryPath = resolveRepositoryPath(sourcePath, hrefPath);
+  const publicDirectory = "website/public/";
+  if (!repositoryPath?.startsWith(publicDirectory)) {
+    return href;
+  }
+
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+  return `${baseUrl}${repositoryPath.slice(publicDirectory.length)}${match[2] ?? ""}`;
 }
 
 function isExternalLink(href: string): boolean {
@@ -141,10 +164,14 @@ function isExternalLink(href: string): boolean {
   );
 }
 
-function createMarkdownRenderer(includeCopyButtons: boolean) {
+function createMarkdownRenderer(
+  includeCopyButtons: boolean,
+  sourcePath: string,
+) {
   const renderer = new marked.Renderer();
   const headingCounts = new Map<string, number>();
   const renderCode = renderer.code;
+  const renderImage = renderer.image;
   const renderLink = renderer.link;
   const renderParagraph = renderer.paragraph;
 
@@ -178,8 +205,15 @@ function createMarkdownRenderer(includeCopyButtons: boolean) {
       .replace("<a ", '<a target="_blank" rel="noopener noreferrer" ')
       .replace(
         "</a>",
-        ` <img class="external-link-icon" src="${externalLinkIcon}" alt="opens external page"></a>`,
+        ` <img class="external-link-icon theme-image--light" src="${externalLinkIconBlack}" alt="opens external page"><img class="external-link-icon theme-image--dark" src="${externalLinkIcon}" alt="opens external page"></a>`,
       );
+  };
+
+  renderer.image = function (token) {
+    return renderImage.call(this, {
+      ...token,
+      href: rewriteMarkdownImage(token.href, sourcePath),
+    });
   };
 
   renderer.paragraph = function (token) {
@@ -271,6 +305,7 @@ watchEffect(async () => {
   renderedMarkdown.value = await marked.parse(props.markdown, {
     renderer: createMarkdownRenderer(
       props.sourcePath.startsWith("framework/ai/skills/"),
+      props.sourcePath,
     ),
     walkTokens(token) {
       if (token.type === "link") {

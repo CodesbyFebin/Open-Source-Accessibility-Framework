@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Community Phase, Action 3](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md#3-provide-accessible-and-respectful-ways-to-contribute-and-collaborate)
 
-## Why it matters
+## Why It Matters
 
 Accessible tools and processes allow more people to share expertise, influence decisions, and take on responsibility. Contributions can include testing, issue reproduction, documentation, design feedback, research, mentoring, translation, community support, documentation, governance, and leadership.
 
-## Definition of done
+## Definition of Done
 
 1. Contributor guidance documents accessible synchronous and asynchronous ways to participate.
 2. Collaboration tools and workflows have been reviewed for significant accessibility and usability barriers, with alternatives documented as needed.

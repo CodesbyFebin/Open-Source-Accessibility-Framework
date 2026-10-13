@@ -48,6 +48,9 @@ To improve the framework itself, open an issue or pull request in this repositor
 
 Framework maintainers can find operational guidance in [Framework maintenance](framework/maintainers/framework-maintenance.md).
 
-## Website
+## Sponsors
 
-The source for the framework's companion site lives in [`website/`](website). See [`website/README.md`](website/README.md) for local development instructions.
+![GitHub](website/public/sponsors/github-mark-black.svg#gh-light-mode-only)
+![GitHub](website/public/sponsors/github-mark-white.svg#gh-dark-mode-only)
+![Microsoft](website/public/sponsors/microsoft-gray.png#gh-light-mode-only)
+![Microsoft](website/public/sponsors/microsoft-white.png#gh-dark-mode-only)

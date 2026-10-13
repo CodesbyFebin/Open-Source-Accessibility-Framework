@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Testing Phase, Action 2](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#2-perform-a-keyboard-only-smoke-test-for-core-flows)
 
-## Why it matters
+## Why It Matters
 
 This action covers a high-impact baseline.
 
-## Definition of done
+## Definition of Done
 
 1. Key tasks have documented keyboard-only checks.
 2. The checks confirm keyboard access, focus visibility, and logical focus order.

@@ -38,6 +38,11 @@ const router = createRouter({
       component: () => import("../views/AiUsage.vue"),
     },
     {
+      path: "/talking-points",
+      name: "talking-points",
+      component: () => import("../views/TalkingPoints.vue"),
+    },
+    {
       path: "/skills/foundational",
       name: "foundational-skills",
       component: () => import("../views/FoundationalSkills.vue"),

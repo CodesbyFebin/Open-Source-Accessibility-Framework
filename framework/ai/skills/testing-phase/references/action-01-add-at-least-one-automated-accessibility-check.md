@@ -4,11 +4,11 @@
 - **Cadence:** Initial setup + ongoing
 - **Canonical source:** [Testing Phase, Action 1](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md#1-add-at-least-one-automated-accessibility-check)
 
-## Why it matters
+## Why It Matters
 
 This action helps catch common regressions.
 
-## Definition of done
+## Definition of Done
 
 1. At least one automated accessibility check is configured or documented.
 2. The check runs against relevant project code or flows.

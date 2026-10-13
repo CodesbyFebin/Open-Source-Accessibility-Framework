@@ -4,11 +4,11 @@
 - **Cadence:** Ongoing
 - **Canonical source:** [Community Phase, Action 1](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md#1-invite-community-help-on-accessibility-work)
 
-## Why it matters
+## Why It Matters
 
 Involving people with disabilities early brings lived experience that tools and specifications cannot reproduce, while practitioners and experienced testers contribute complementary technical expertise. Together, these perspectives help projects make better decisions throughout development instead of evaluating accessibility only after the work is complete.
 
-## Definition of done
+## Definition of Done
 
 1. Community-contribution opportunities are publicly available.
 2. Issues include scope, context, and acceptance criteria.

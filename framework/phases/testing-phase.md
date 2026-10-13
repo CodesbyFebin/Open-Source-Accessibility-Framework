@@ -1,10 +1,10 @@
-# Testing phase
+# Testing Phase
 
 The testing phase establishes repeatable automated and manual practices for evaluating accessibility across a project's code, interfaces, documentation, and core user flows. It combines automated tools, keyboard-only checks, screen reader spot checks, visual checks, and documentation reviews because no single testing method can identify every accessibility barrier.
 
 The goal is not to test every possible interaction at once. Projects begin with representative, high-impact journeys and expand their coverage over time. Test results should be recorded, incorporated into CI/CD where practical, and connected to the project's issue-tracking process so that barriers are addressed, prioritized, and revisited as the project changes.
 
-## Phase overview
+## Phase Overview
 
 This phase has **6 total actions** with **17 total tasks** to complete.
 
@@ -25,15 +25,15 @@ Cadence describes how an action continues after its initial completion: **One-ti
 
 [Join the community by registering your project!](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) Your registration issue makes your progress visible alongside other projects using the framework, creating opportunities to share experience, offer mentorship, ask for help, and learn from one another.
 
-## Testing actions
+## Testing Actions
 
 ### 1. Add at least one automated accessibility check
 
-#### Why it matters
+#### Why It Matters
 
 This action helps catch common regressions.
 
-#### Definition of done
+#### Definition of Done
 
 1. At least one automated accessibility check is configured or documented.
 2. The check runs against relevant project code or flows.
@@ -51,11 +51,11 @@ This action helps catch common regressions.
 
 ### 2. Perform a keyboard-only smoke test for core flows
 
-#### Why it matters
+#### Why It Matters
 
 This action covers a high-impact baseline.
 
-#### Definition of done
+#### Definition of Done
 
 1. Key tasks have documented keyboard-only checks.
 2. The checks confirm that all links and controls:
@@ -77,11 +77,11 @@ This action covers a high-impact baseline.
 
 ### 3. Perform a screen reader spot check for core flows
 
-#### Why it matters
+#### Why It Matters
 
 This action validates real usability beyond automation.
 
-#### Definition of done
+#### Definition of Done
 
 1. Key tasks have documented screen reader checks.
 2. The test environment is recorded.
@@ -98,11 +98,11 @@ This action validates real usability beyond automation.
 
 ### 4. Perform manual accessibility checks
 
-#### Why it matters
+#### Why It Matters
 
 This action addresses common visual access barriers.
 
-#### Definition of done
+#### Definition of Done
 
 1. Relevant interfaces have documented checks for keyboard, descriptive language, plain language, zoom and reflow, and color contrast and usage.
 2. Information and functionality remain available at the tested settings.
@@ -122,11 +122,11 @@ This action addresses common visual access barriers.
 
 ### 5. Perform accessibility checks for documentation
 
-#### Why it matters
+#### Why It Matters
 
 This action improves the first experience many users have.
 
-#### Definition of done
+#### Definition of Done
 
 1. Documentation checks cover structure, alternatives, links, captions, tables, and code blocks.
 2. Representative documentation has been reviewed.
@@ -141,11 +141,11 @@ This action improves the first experience many users have.
 
 ### 6. Document supported environments and known limitations
 
-#### Why it matters
+#### Why It Matters
 
 This action sets transparent expectations about where the project has been evaluated and helps people understand known accessibility barriers and available alternatives.
 
-#### Definition of done
+#### Definition of Done
 
 1. The `ACCESSIBILITY.md` identifies supported or tested platforms, devices, browsers, input methods, and assistive technologies.
 2. Known accessibility limitations are described in terms of their effect on users, with workarounds, equivalent access, and links to tracked issues where available.

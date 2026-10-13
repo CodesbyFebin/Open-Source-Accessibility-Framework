@@ -22,7 +22,7 @@ name: workflow-phase
 description: "Implements all Workflow Phase actions or selected actions by number, title, or ID, with bundled offline requirements."
 metadata:
   framework-phase-id: workflow
-  framework-bundle-digest: "e96a0f4de275"
+  framework-bundle-digest: "f21d218c204c"
   framework-source-ref: main
   framework-source: "https://raw.githubusercontent.com/open-source-accessibility/Open-Source-Accessibility-Framework/main/framework/phases/workflow-phase.md"
 ---
@@ -109,7 +109,7 @@ metadata:
 - **ID:** `make-docs-accessible-by-default`
 - **Cadence:** Ongoing
 - **Definition of done:**
-    1. Documentation uses meaningful structure and semantics.
+    1. Documentation uses meaningful structure and semantics (e.g. headings, lists).
     2. Images, diagrams, and videos have appropriate alternatives or supporting text.
     3. Tables and code blocks are presented accessibly.
 

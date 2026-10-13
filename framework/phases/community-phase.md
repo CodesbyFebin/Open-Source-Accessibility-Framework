@@ -6,7 +6,7 @@ In this phase, projects build trust by responding constructively to accessibilit
 
 Use the [Community Accessibility Resources](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/resources/community/community.md) guide to find learning materials, community-engagement guidance, participation opportunities, and examples for this phase.
 
-## Phase overview
+## Phase Overview
 
 This phase has **6 total actions** with **19 total tasks** to complete.
 
@@ -27,15 +27,15 @@ Cadence describes how an action continues after its initial completion: **One-ti
 
 [Join the community by registering your project!](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) Your registration issue makes your progress visible alongside other projects using the framework, creating opportunities to share experience, offer mentorship, ask for help, and learn from one another.
 
-## Community actions
+## Community Actions
 
 ### 1. Invite community help on accessibility work
 
-#### Why it matters
+#### Why It Matters
 
 Involving people with disabilities early brings lived experience that tools and specifications cannot reproduce, while practitioners and experienced testers contribute complementary technical expertise. Together, these perspectives help projects make better decisions throughout development instead of evaluating accessibility only after the work is complete.
 
-#### Definition of done
+#### Definition of Done
 
 1. Community-contribution opportunities are publicly available.
 2. Issues include scope, context, and acceptance criteria.
@@ -53,11 +53,11 @@ Involving people with disabilities early brings lived experience that tools and 
 
 ### 2. Respond constructively to accessibility reports
 
-#### Why it matters
+#### Why It Matters
 
 This action builds trust with users and contributors; how a project responds to accessibility reports can determine whether people continue using or contributing to it.
 
-#### Definition of done
+#### Definition of Done
 
 1. Best practices on how to respond are documented in your `ACCESSIBILITY.md`.
 2. Accessibility reports receive a respectful acknowledgement, status, and next step response.
@@ -73,11 +73,11 @@ This action builds trust with users and contributors; how a project responds to 
 
 ### 3. Provide accessible and respectful ways to contribute and collaborate
 
-#### Why it matters
+#### Why It Matters
 
 Accessible tools and processes allow more people to share expertise, influence decisions, and take on responsibility. Contributions can include testing, issue reproduction, documentation, design feedback, research, mentoring, translation, community support, documentation, governance, and leadership.
 
-#### Definition of done
+#### Definition of Done
 
 1. Contributor guidance documents accessible synchronous and asynchronous ways to participate.
 2. Collaboration tools and workflows have been reviewed for significant accessibility and usability barriers, with alternatives documented as needed.
@@ -102,11 +102,11 @@ Accessible tools and processes allow more people to share expertise, influence d
 
 ### 4. Recognize accessibility contributions publicly
 
-#### Why it matters
+#### Why It Matters
 
 Public recognition shows that accessibility work, including contributions beyond source code, is valued.
 
-#### Definition of done
+#### Definition of Done
 
 1. Recognition respects contributor preferences and protects personal information.
 2. Accessibility contributions are publicly recognized with the contributor's consent.
@@ -124,11 +124,11 @@ Public recognition shows that accessibility work, including contributions beyond
 
 ### 5. Publish accessibility progress updates
 
-#### Why it matters
+#### Why It Matters
 
 Public progress updates build trust and accountability by showing that accessibility reports lead to action, highlighting work that still needs attention, and reducing duplicated effort.
 
-#### Definition of done
+#### Definition of Done
 
 1. Accessibility progress is published through at least one public project channel.
 2. Updates include completed work, remaining work, known barriers or limitations, and relevant links.
@@ -143,11 +143,11 @@ Public progress updates build trust and accountability by showing that accessibi
 
 ### 6. Share accessibility resources
 
-#### Why it matters
+#### Why It Matters
 
 Sharing accessibility resources, solutions, and lessons learned helps other projects improve faster. Documenting both successes and failures enables communities to build on proven practices and avoid repeating mistakes.
 
-#### Definition of done
+#### Definition of Done
 
 1. Useful accessibility resources are made publicly available.
 2. Resources include enough context for another project to use them.

@@ -1,21 +1,21 @@
-import { describe, it, expect, vi } from 'vitest'
-import { flushPromises, mount } from '@vue/test-utils'
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { describe, it, expect, vi } from "vitest";
+import { flushPromises, mount } from "@vue/test-utils";
+import { createMemoryHistory, createRouter } from "vue-router";
 
-import MarkdownPage from '../MarkdownPage.vue'
+import MarkdownPage from "../MarkdownPage.vue";
 
 async function mountMarkdownPage(
   props: { markdown: string; sourcePath: string },
-  location = '/',
+  location = "/",
   attachTo?: Element,
 ) {
   const router = createRouter({
     history: createMemoryHistory(),
-    routes: [{ path: '/:pathMatch(.*)*', component: { template: '<div />' } }],
-  })
+    routes: [{ path: "/:pathMatch(.*)*", component: { template: "<div />" } }],
+  });
 
-  await router.push(location)
-  await router.isReady()
+  await router.push(location);
+  await router.isReady();
 
   return {
     router,
@@ -26,256 +26,296 @@ async function mountMarkdownPage(
       },
       attachTo,
     }),
-  }
+  };
 }
 
-describe('MarkdownPage', () => {
-  it('renders markdown into semantic HTML', async () => {
-    const { wrapper } = await mountMarkdownPage({
-      markdown: '# Framework\n\nVisit [docs](https://example.com).\n\n- First item',
-      sourcePath: 'README.md',
-    })
-
-    await flushPromises()
-
-    const heading = wrapper.find('.markdown-page__content h1')
-    expect(heading.exists()).toBe(true)
-    expect(heading.text()).toBe('Framework')
-
-    const link = wrapper.find('.markdown-page__content a')
-    expect(link.exists()).toBe(true)
-    expect(link.attributes('href')).toBe('https://example.com')
-    expect(link.attributes('target')).toBe('_blank')
-    expect(link.attributes('rel')).toBe('noopener noreferrer')
-    expect(link.text()).toBe('docs')
-    expect(link.find('img').attributes('alt')).toBe('opens external page')
-
-    const listItem = wrapper.find('.markdown-page__content li')
-    expect(listItem.exists()).toBe(true)
-    expect(listItem.text()).toBe('First item')
-  })
-
-  it('renders phase skill notes as callout asides', async () => {
+describe("MarkdownPage", () => {
+  it("renders markdown into semantic HTML", async () => {
     const { wrapper } = await mountMarkdownPage({
       markdown:
-        '**Phase skill:** Use the [Testing Phase Skill](../ai/skills/testing-skills.md).',
-      sourcePath: 'framework/phases/testing-phase.md',
-    })
+        "# Framework\n\nVisit [docs](https://example.com).\n\n- First item",
+      sourcePath: "README.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    const callout = wrapper.find('aside.phase-skill-callout')
-    expect(callout.exists()).toBe(true)
-    expect(callout.text()).toContain('Phase skill:')
-    expect(callout.find('a').attributes('href')).toBe('/skills/testing')
-  })
+    const heading = wrapper.find(".markdown-page__content h1");
+    expect(heading.exists()).toBe(true);
+    expect(heading.text()).toBe("Framework");
 
-  it('copies skill code blocks to the clipboard', async () => {
-    const writeText = vi.fn().mockResolvedValue(undefined)
-    Object.defineProperty(navigator, 'clipboard', {
+    const link = wrapper.find(".markdown-page__content a");
+    expect(link.exists()).toBe(true);
+    expect(link.attributes("href")).toBe("https://example.com");
+    expect(link.attributes("target")).toBe("_blank");
+    expect(link.attributes("rel")).toBe("noopener noreferrer");
+    expect(link.text()).toBe("docs");
+    const externalLinkIcons = link.findAll("img");
+    expect(externalLinkIcons).toHaveLength(2);
+    expect(externalLinkIcons[0]?.classes()).toContain("theme-image--light");
+    expect(externalLinkIcons[1]?.classes()).toContain("theme-image--dark");
+    expect(
+      externalLinkIcons.every(
+        (icon) => icon.attributes("alt") === "opens external page",
+      ),
+    ).toBe(true);
+
+    const listItem = wrapper.find(".markdown-page__content li");
+    expect(listItem.exists()).toBe(true);
+    expect(listItem.text()).toBe("First item");
+  });
+
+  it("renders phase skill notes as callout asides", async () => {
+    const { wrapper } = await mountMarkdownPage({
+      markdown:
+        "**Phase skill:** Use the [Testing Phase Skill](../ai/skills/testing-skills.md).",
+      sourcePath: "framework/phases/testing-phase.md",
+    });
+
+    await flushPromises();
+
+    const callout = wrapper.find("aside.phase-skill-callout");
+    expect(callout.exists()).toBe(true);
+    expect(callout.text()).toContain("Phase skill:");
+    expect(callout.find("a").attributes("href")).toBe("/skills/testing");
+  });
+
+  it("copies skill code blocks to the clipboard", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: { writeText },
-    })
-    const skill = '---\nname: testing-phase\n---\n\nUse the current phase guidance.'
+    });
+    const skill =
+      "---\nname: testing-phase\n---\n\nUse the current phase guidance.";
     const { wrapper } = await mountMarkdownPage({
       markdown: `\`\`\`markdown\n${skill}\n\`\`\``,
-      sourcePath: 'framework/ai/skills/testing-skills.md',
-    })
+      sourcePath: "framework/ai/skills/testing-skills.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    const button = wrapper.find('button.copyable-code-block__button')
-    expect(button.exists()).toBe(true)
-    await button.trigger('click')
-    await flushPromises()
+    const button = wrapper.find("button.copyable-code-block__button");
+    expect(button.exists()).toBe(true);
+    await button.trigger("click");
+    await flushPromises();
 
-    expect(writeText).toHaveBeenCalledWith(`${skill}\n`)
-    expect(button.text()).toBe('Copied')
-    expect(wrapper.find('.copyable-code-block__status').text()).toBe(
-      'Skill instructions copied to the clipboard.',
-    )
+    expect(writeText).toHaveBeenCalledWith(`${skill}\n`);
+    expect(button.text()).toBe("Copied");
+    expect(wrapper.find(".copyable-code-block__status").text()).toBe(
+      "Skill instructions copied to the clipboard.",
+    );
 
-    wrapper.unmount()
-    Reflect.deleteProperty(navigator, 'clipboard')
-  })
+    wrapper.unmount();
+    Reflect.deleteProperty(navigator, "clipboard");
+  });
 
-  it('does not add copy buttons to non-skill code blocks', async () => {
+  it("does not add copy buttons to non-skill code blocks", async () => {
     const { wrapper } = await mountMarkdownPage({
-      markdown: '```sh\nnpm test\n```',
-      sourcePath: 'README.md',
-    })
+      markdown: "```sh\nnpm test\n```",
+      sourcePath: "README.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    expect(wrapper.find('.copyable-code-block__button').exists()).toBe(false)
-  })
+    expect(wrapper.find(".copyable-code-block__button").exists()).toBe(false);
+  });
 
-  it('re-renders when markdown prop changes', async () => {
+  it("re-renders when markdown prop changes", async () => {
     const { wrapper } = await mountMarkdownPage({
-      markdown: 'Initial paragraph',
-      sourcePath: 'README.md',
-    })
+      markdown: "Initial paragraph",
+      sourcePath: "README.md",
+    });
 
-    await flushPromises()
-    expect(wrapper.find('.markdown-page__content').text()).toContain('Initial paragraph')
+    await flushPromises();
+    expect(wrapper.find(".markdown-page__content").text()).toContain(
+      "Initial paragraph",
+    );
 
     await wrapper.setProps({
-      markdown: '## Updated heading',
-    })
-    await flushPromises()
+      markdown: "## Updated heading",
+    });
+    await flushPromises();
 
-    const updatedHeading = wrapper.find('.markdown-page__content h2')
-    expect(updatedHeading.exists()).toBe(true)
-    expect(updatedHeading.text()).toBe('Updated heading')
-  })
+    const updatedHeading = wrapper.find(".markdown-page__content h2");
+    expect(updatedHeading.exists()).toBe(true);
+    expect(updatedHeading.text()).toBe("Updated heading");
+  });
 
-  it('rewrites phase and skill file links to website routes', async () => {
+  it("rewrites phase and skill file links to website routes", async () => {
     const { wrapper } = await mountMarkdownPage({
       markdown: [
-        '[Relative](framework/phases/foundational-phase.md)',
-        '[Root relative](/framework/phases/testing-phase.md#manual-checks)',
-        '[GitHub](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md)',
-        '[Foundational skill](framework/ai/skills/foundational-skills.md)',
-        '[Workflow skill](framework/ai/skills/workflow-skills.md)',
-        '[Testing skill](framework/ai/skills/testing-skills.md)',
-        '[Community skill](framework/ai/skills/community-skills.md)',
-        '[Unrelated](https://example.com/framework/phases/community-phase.md)',
-      ].join('\n\n'),
-      sourcePath: 'README.md',
-    })
+        "[Relative](framework/phases/foundational-phase.md)",
+        "[Root relative](/framework/phases/testing-phase.md#manual-checks)",
+        "[GitHub](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/community-phase.md)",
+        "[Foundational skill](framework/ai/skills/foundational-skills.md)",
+        "[Workflow skill](framework/ai/skills/workflow-skills.md)",
+        "[Testing skill](framework/ai/skills/testing-skills.md)",
+        "[Community skill](framework/ai/skills/community-skills.md)",
+        "[Talking points](framework/supporting/talking-points.md)",
+        "[Unrelated](https://example.com/framework/phases/community-phase.md)",
+      ].join("\n\n"),
+      sourcePath: "README.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    const links = wrapper.findAll('.markdown-page__content a')
-    expect(links.map((link) => link.attributes('href'))).toEqual([
-      '/foundational',
-      '/testing#manual-checks',
-      '/community',
-      '/skills/foundational',
-      '/skills/workflow',
-      '/skills/testing',
-      '/skills/community',
-      'https://example.com/framework/phases/community-phase.md',
-    ])
-    expect(links.slice(0, 7).every((link) => link.attributes('target') === undefined)).toBe(true)
-    expect(links[7]?.attributes('target')).toBe('_blank')
-  })
+    const links = wrapper.findAll(".markdown-page__content a");
+    expect(links.map((link) => link.attributes("href"))).toEqual([
+      "/foundational",
+      "/testing#manual-checks",
+      "/community",
+      "/skills/foundational",
+      "/skills/workflow",
+      "/skills/testing",
+      "/skills/community",
+      "/talking-points",
+      "https://example.com/framework/phases/community-phase.md",
+    ]);
+    expect(
+      links
+        .slice(0, 8)
+        .every((link) => link.attributes("target") === undefined),
+    ).toBe(true);
+    expect(links[8]?.attributes("target")).toBe("_blank");
+  });
 
-  it('rewrites phase overview skill and instruction links', async () => {
+  it("rewrites phase overview skill and instruction links", async () => {
     const { wrapper } = await mountMarkdownPage({
       markdown: [
-        '[Testing Phase Skill](../ai/skills/testing-skills.md)',
-        '[Framework Skills instructions](../ai/guide.md#framework-skills)',
-      ].join('\n\n'),
-      sourcePath: 'framework/phases/testing-phase.md',
-    })
+        "[Testing Phase Skill](../ai/skills/testing-skills.md)",
+        "[Framework Skills instructions](../ai/guide.md#framework-skills)",
+      ].join("\n\n"),
+      sourcePath: "framework/phases/testing-phase.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
     expect(
-      wrapper.findAll('.markdown-page__content a').map((link) => link.attributes('href')),
-    ).toEqual(['/skills/testing', '/ai#framework-skills'])
-  })
+      wrapper
+        .findAll(".markdown-page__content a")
+        .map((link) => link.attributes("href")),
+    ).toEqual(["/skills/testing", "/ai#framework-skills"]);
+  });
 
-  it('opens supporting documents in the GitHub code view unless they target a heading', async () => {
+  it("opens supporting documents in the GitHub code view unless they target a heading", async () => {
     const exactBranchUrl =
-      'https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/simplify-phases/framework/supporting/foundational-phase/initial-accessibility.md'
+      "https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/simplify-phases/framework/supporting/foundational-phase/initial-accessibility.md";
     const plainUrl =
-      'https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/supporting/foundational-phase/initial-accessibility.md?plain=1'
+      "https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/supporting/foundational-phase/initial-accessibility.md?plain=1";
     const { wrapper } = await mountMarkdownPage({
       markdown: [
-        '[Relative supporting file](../supporting/foundational-phase/initial-accessibility.md)',
-        '[Supporting file with anchor](../supporting/foundational-phase/initial-accessibility.md#reporting)',
+        "[Relative supporting file](../supporting/foundational-phase/initial-accessibility.md)",
+        "[Supporting file with anchor](../supporting/foundational-phase/initial-accessibility.md#reporting)",
         `[Existing GitHub file](${exactBranchUrl})`,
         `[Already plain](${plainUrl})`,
-      ].join('\n\n'),
-      sourcePath: 'framework/phases/foundational-phase.md',
-    })
+      ].join("\n\n"),
+      sourcePath: "framework/phases/foundational-phase.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    const links = wrapper.findAll('.markdown-page__content a')
-    expect(links.map((link) => link.attributes('href'))).toEqual([
+    const links = wrapper.findAll(".markdown-page__content a");
+    expect(links.map((link) => link.attributes("href"))).toEqual([
       plainUrl,
-      'https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/supporting/foundational-phase/initial-accessibility.md#reporting',
+      "https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/supporting/foundational-phase/initial-accessibility.md#reporting",
       `${exactBranchUrl}?plain=1`,
       plainUrl,
-    ])
-  })
+    ]);
+  });
 
-  it('keeps other non-website links pointing to repository files', async () => {
+  it("keeps other non-website links pointing to repository files", async () => {
     const { wrapper } = await mountMarkdownPage({
-      markdown: '[Maintainer file](../maintainers/framework-maintenance.md)',
-      sourcePath: 'framework/phases/foundational-phase.md',
-    })
+      markdown: "[Maintainer file](../maintainers/framework-maintenance.md)",
+      sourcePath: "framework/phases/foundational-phase.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    expect(wrapper.find('.markdown-page__content a').attributes('href')).toBe(
-      'https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/maintainers/framework-maintenance.md',
-    )
-  })
+    expect(wrapper.find(".markdown-page__content a").attributes("href")).toBe(
+      "https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/maintainers/framework-maintenance.md",
+    );
+  });
 
-  it('adds matching, unique ids to action headings', async () => {
+  it("rewrites repository public images to deployed asset URLs", async () => {
+    const { wrapper } = await mountMarkdownPage({
+      markdown:
+        "![GitHub](website/public/sponsors/github-mark-black.svg#gh-light-mode-only)",
+      sourcePath: "README.md",
+    });
+
+    await flushPromises();
+
+    const image = wrapper.get(".markdown-page__content img");
+    expect(image.attributes("src")).toBe(
+      "/sponsors/github-mark-black.svg#gh-light-mode-only",
+    );
+    expect(image.attributes("alt")).toBe("GitHub");
+  });
+
+  it("adds matching, unique ids to action headings", async () => {
     const { wrapper } = await mountMarkdownPage({
       markdown: [
-        '[Action 1](#1-create-an-accessibilitymd)',
-        '',
-        '### 1. Create an ACCESSIBILITY.md',
-        '',
-        '### 1. Create an ACCESSIBILITY.md',
-      ].join('\n'),
-      sourcePath: 'framework/phases/foundational-phase.md',
-    })
+        "[Action 1](#1-create-an-accessibilitymd)",
+        "",
+        "### 1. Create an ACCESSIBILITY.md",
+        "",
+        "### 1. Create an ACCESSIBILITY.md",
+      ].join("\n"),
+      sourcePath: "framework/phases/foundational-phase.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    expect(wrapper.find('.markdown-page__content a').attributes('href')).toBe(
-      '#1-create-an-accessibilitymd',
-    )
+    expect(wrapper.find(".markdown-page__content a").attributes("href")).toBe(
+      "#1-create-an-accessibilitymd",
+    );
     expect(
-      wrapper.findAll('.markdown-page__content h3').map((heading) => heading.attributes('id')),
-    ).toEqual(['1-create-an-accessibilitymd', '1-create-an-accessibilitymd-1'])
-    expect(wrapper.find('.markdown-page__content h3').attributes('tabindex')).toBe('-1')
-  })
+      wrapper
+        .findAll(".markdown-page__content h3")
+        .map((heading) => heading.attributes("id")),
+    ).toEqual(["1-create-an-accessibilitymd", "1-create-an-accessibilitymd-1"]);
+    expect(
+      wrapper.find(".markdown-page__content h3").attributes("tabindex"),
+    ).toBe("-1");
+  });
 
-  it('adds a focusable id to section headings', async () => {
+  it("adds a focusable id to section headings", async () => {
     const { wrapper } = await mountMarkdownPage({
-      markdown: '## Framework Skills',
-      sourcePath: 'framework/ai/guide.md',
-    })
+      markdown: "## Framework Skills",
+      sourcePath: "framework/ai/guide.md",
+    });
 
-    await flushPromises()
+    await flushPromises();
 
-    const heading = wrapper.find('.markdown-page__content h2')
-    expect(heading.attributes('id')).toBe('framework-skills')
-    expect(heading.attributes('tabindex')).toBe('-1')
-  })
+    const heading = wrapper.find(".markdown-page__content h2");
+    expect(heading.attributes("id")).toBe("framework-skills");
+    expect(heading.attributes("tabindex")).toBe("-1");
+  });
 
-  it('scrolls to and focuses the heading when the route hash changes', async () => {
-    const scrollIntoView = vi.fn()
-    Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+  it("scrolls to and focuses the heading when the route hash changes", async () => {
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
       configurable: true,
       value: scrollIntoView,
-    })
+    });
     const { router, wrapper } = await mountMarkdownPage(
       {
-        markdown: '### 1. Create an ACCESSIBILITY.md',
-        sourcePath: 'framework/phases/foundational-phase.md',
+        markdown: "### 1. Create an ACCESSIBILITY.md",
+        sourcePath: "framework/phases/foundational-phase.md",
       },
-      '/foundational',
+      "/foundational",
       document.body,
-    )
+    );
 
-    await flushPromises()
-    await router.push('/foundational#1-create-an-accessibilitymd')
-    await flushPromises()
+    await flushPromises();
+    await router.push("/foundational#1-create-an-accessibilitymd");
+    await flushPromises();
 
-    const heading = wrapper.find('[id="1-create-an-accessibilitymd"]')
-    expect(document.activeElement).toBe(heading.element)
-    expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start' })
+    const heading = wrapper.find('[id="1-create-an-accessibilitymd"]');
+    expect(document.activeElement).toBe(heading.element);
+    expect(scrollIntoView).toHaveBeenCalledWith({ block: "start" });
 
-    wrapper.unmount()
-    Reflect.deleteProperty(HTMLElement.prototype, 'scrollIntoView')
-  })
-})
+    wrapper.unmount();
+    Reflect.deleteProperty(HTMLElement.prototype, "scrollIntoView");
+  });
+});

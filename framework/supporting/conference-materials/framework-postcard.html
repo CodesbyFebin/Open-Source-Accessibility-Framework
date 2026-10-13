@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Source Accessibility Framework postcard</title>
+    <style>
+      @page {
+        size: 6in 4in;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        min-width: 6in;
+        min-height: 100vh;
+        padding: 0.35in;
+        background: #d5dbe0;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      main {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.35in;
+      }
+
+      .postcard {
+        width: 6in;
+        height: 4in;
+        overflow: hidden;
+        background: #131a21;
+      }
+
+      .front {
+        display: flex;
+        flex-direction: column;
+        padding: 0.34in 0.42in 0.3in;
+        border-left: 0.1in solid #ebc45e;
+      }
+
+      .front h1 {
+        max-width: 5.1in;
+        margin: 0 0 0.09in;
+        color: #fff;
+        font-size: 29pt;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+
+      .tagline {
+        max-width: 5in;
+        margin: 0 0 0.18in;
+        color: #ebc45e;
+        font-size: 13pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .summary {
+        max-width: 5in;
+        margin: 0 0 0.18in;
+        font-size: 10pt;
+        line-height: 1.35;
+      }
+
+      .front h2 {
+        margin: 0 0 0.07in;
+        font-size: 9pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .phase-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.08in 0.22in;
+        margin: 0;
+        padding: 0;
+        font-size: 9pt;
+        line-height: 1.25;
+        list-style: none;
+      }
+
+      .phase-list li {
+        position: relative;
+        padding-left: 0.12in;
+      }
+
+      .phase-list li::before {
+        position: absolute;
+        left: 0;
+        color: #ebc45e;
+        content: "•";
+      }
+
+      .note {
+        margin: auto 0 0;
+        padding-top: 0.11in;
+        border-top: 1px solid #66717a;
+        font-size: 8.2pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .back {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.3in;
+        border-top: 0.1in solid #ebc45e;
+        text-align: center;
+      }
+
+      .back h2 {
+        max-width: 5in;
+        margin: 0 0 0.2in;
+        font-size: 27pt;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .qr-code {
+        display: block;
+        width: 2.15in;
+        height: 2.15in;
+        margin-bottom: 0.18in;
+      }
+
+      .short-url {
+        color: #ebc45e;
+        font-size: 13pt;
+        font-weight: 700;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 6in;
+          min-height: 0;
+          background: #131a21;
+        }
+
+        body {
+          display: block;
+          padding: 0;
+        }
+
+        main {
+          display: block;
+        }
+
+        .postcard {
+          break-inside: avoid;
+        }
+
+        .front {
+          break-after: page;
+        }
+      }
+
+      @media screen and (max-width: 620px) {
+        body {
+          display: block;
+          min-width: 0;
+          padding: 0;
+          background: #131a21;
+        }
+
+        main {
+          gap: 0;
+        }
+
+        .postcard {
+          width: 100%;
+          height: auto;
+          min-height: 100vh;
+        }
+      }
+
+      @media screen {
+        body:has(.postcard:target) {
+          min-width: 0;
+          padding: 0;
+          overflow: hidden;
+          background: #131a21;
+        }
+
+        body:has(.postcard:target) main {
+          display: block;
+        }
+
+        body:has(.postcard:target) .postcard:not(:target) {
+          display: none;
+        }
+
+        body:has(.postcard:target) .postcard:target {
+          width: 6in;
+          height: 4in;
+          min-height: 0;
+        }
+      }
+
+      @media print {
+        * {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section
+        id="front"
+        class="postcard front"
+        aria-labelledby="postcard-title"
+      >
+        <h1 id="postcard-title">Open Source Accessibility Framework</h1>
+        <p class="tagline">
+          Integrate accessibility into your project, one practical step at a
+          time
+        </p>
+        <p class="summary">
+          A phased framework that helps open source projects turn accessibility
+          goals into public, trackable progress.
+        </p>
+
+        <section aria-labelledby="phases">
+          <h2 id="phases">Four phases</h2>
+          <ul class="phase-list">
+            <li><strong>Foundational:</strong> make the commitment visible.</li>
+            <li><strong>Workflow:</strong> build accessibility into the work.</li>
+            <li><strong>Testing:</strong> add repeatable checks.</li>
+            <li><strong>Community:</strong> invite feedback and participation.</li>
+          </ul>
+        </section>
+
+        <p class="note">
+          An improvement and accountability model - not a certification, score,
+          ranking, or guarantee of conformance.
+        </p>
+      </section>
+
+      <section
+        id="back"
+        class="postcard back"
+        aria-labelledby="explore-title"
+      >
+        <h2 id="explore-title">Explore the Accessibility Framework</h2>
+        <a href="https://gh.io/accessibility-framework">
+          <img
+            class="qr-code"
+            src="accessibility-framework-qr.png"
+            alt="QR code for the Open Source Accessibility Framework website"
+          />
+        </a>
+        <a
+          class="short-url"
+          href="https://gh.io/accessibility-framework"
+          >gh.io/accessibility-framework</a
+        >
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import externalLinkIcon from "../assets/external-link.svg";
+import externalLinkIconBlack from "../assets/external-link-black.svg";
 </script>
 
 <template>
@@ -8,17 +10,23 @@ import externalLinkIcon from "../assets/external-link.svg";
       <p>Open Source Accessibility Framework. Licensed MIT.</p>
       <ul class="site-footer__list" role="list">
         <li>
+          <RouterLink to="/talking-points">Talking points</RouterLink>
+        </li>
+        <li>
           <a
             href="https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework"
             target="_blank"
             rel="noopener noreferrer"
             >Repository
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
         <li>
           <a
@@ -27,11 +35,14 @@ import externalLinkIcon from "../assets/external-link.svg";
             rel="noopener noreferrer"
             >Code of conduct
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
         <li>
           <a
@@ -40,11 +51,14 @@ import externalLinkIcon from "../assets/external-link.svg";
             rel="noopener noreferrer"
             >Organization
             <img
-              class="external-link-icon"
+              class="external-link-icon theme-image--light"
+              :src="externalLinkIconBlack"
+              alt="opens external page" />
+            <img
+              class="external-link-icon theme-image--dark"
               :src="externalLinkIcon"
               alt="opens external page"
-            /></a
-          >
+          /></a>
         </li>
       </ul>
     </div>

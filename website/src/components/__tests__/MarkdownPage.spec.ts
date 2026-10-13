@@ -228,6 +228,22 @@ describe("MarkdownPage", () => {
     );
   });
 
+  it("rewrites repository public images to deployed asset URLs", async () => {
+    const { wrapper } = await mountMarkdownPage({
+      markdown:
+        "![GitHub](website/public/sponsors/github-mark-black.svg#gh-light-mode-only)",
+      sourcePath: "README.md",
+    });
+
+    await flushPromises();
+
+    const image = wrapper.get(".markdown-page__content img");
+    expect(image.attributes("src")).toBe(
+      "/sponsors/github-mark-black.svg#gh-light-mode-only",
+    );
+    expect(image.attributes("alt")).toBe("GitHub");
+  });
+
   it("adds matching, unique ids to action headings", async () => {
     const { wrapper } = await mountMarkdownPage({
       markdown: [

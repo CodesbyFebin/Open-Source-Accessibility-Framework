@@ -4,7 +4,11 @@ import readmeMarkdown from "../../../README.md?raw";
 </script>
 
 <template>
-  <MarkdownPage :markdown="readmeMarkdown" source-path="README.md" class="readme" />
+  <MarkdownPage
+    :markdown="readmeMarkdown"
+    source-path="README.md"
+    class="readme"
+  />
 </template>
 
 <style scoped>
@@ -73,5 +77,37 @@ import readmeMarkdown from "../../../README.md?raw";
 
 .readme .markdown-page__content td:last-child {
   color: var(--color-ink-muted);
+}
+
+.readme :deep(.markdown-page__content p:has(> img[src*="/sponsors/"])) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+  margin-top: var(--space-m);
+}
+
+.readme :deep(.markdown-page__content img[src*="/sponsors/github-mark"]) {
+  width: 5rem;
+  height: auto;
+}
+
+.readme :deep(.markdown-page__content img[src*="/sponsors/microsoft-"]) {
+  width: min(14rem, 100%);
+  height: auto;
+}
+
+.readme :deep(.markdown-page__content img[src$="#gh-dark-mode-only"]) {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .readme :deep(.markdown-page__content img[src$="#gh-light-mode-only"]) {
+    display: none;
+  }
+
+  .readme :deep(.markdown-page__content img[src$="#gh-dark-mode-only"]) {
+    display: block;
+  }
 }
 </style>

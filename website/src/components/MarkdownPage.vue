@@ -130,6 +130,27 @@ function rewriteMarkdownLink(href: string, sourcePath: string): string {
     : repositoryUrl;
 }
 
+function rewriteMarkdownImage(href: string, sourcePath: string): string {
+  if (href.startsWith("//") || /^[a-z][a-z\d+.-]*:/i.test(href)) {
+    return href;
+  }
+
+  const match = href.match(/^([^?#]+)([?#].*)?$/);
+  const hrefPath = match?.[1];
+  if (!hrefPath) {
+    return href;
+  }
+
+  const repositoryPath = resolveRepositoryPath(sourcePath, hrefPath);
+  const publicDirectory = "website/public/";
+  if (!repositoryPath?.startsWith(publicDirectory)) {
+    return href;
+  }
+
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+  return `${baseUrl}${repositoryPath.slice(publicDirectory.length)}${match[2] ?? ""}`;
+}
+
 function isExternalLink(href: string): boolean {
   if (!/^https?:\/\//i.test(href)) {
     return false;
@@ -142,10 +163,14 @@ function isExternalLink(href: string): boolean {
   );
 }
 
-function createMarkdownRenderer(includeCopyButtons: boolean) {
+function createMarkdownRenderer(
+  includeCopyButtons: boolean,
+  sourcePath: string,
+) {
   const renderer = new marked.Renderer();
   const headingCounts = new Map<string, number>();
   const renderCode = renderer.code;
+  const renderImage = renderer.image;
   const renderLink = renderer.link;
   const renderParagraph = renderer.paragraph;
 
@@ -181,6 +206,13 @@ function createMarkdownRenderer(includeCopyButtons: boolean) {
         "</a>",
         ` <img class="external-link-icon" src="${externalLinkIcon}" alt="opens external page"></a>`,
       );
+  };
+
+  renderer.image = function (token) {
+    return renderImage.call(this, {
+      ...token,
+      href: rewriteMarkdownImage(token.href, sourcePath),
+    });
   };
 
   renderer.paragraph = function (token) {
@@ -272,6 +304,7 @@ watchEffect(async () => {
   renderedMarkdown.value = await marked.parse(props.markdown, {
     renderer: createMarkdownRenderer(
       props.sourcePath.startsWith("framework/ai/skills/"),
+      props.sourcePath,
     ),
     walkTokens(token) {
       if (token.type === "link") {

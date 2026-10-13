@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Source Accessibility Framework half-page handout</title>
+    <style>
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        background: #d5dbe0;
+        color: #131a21;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .print-sheet {
+        display: block;
+      }
+
+      .handout {
+        display: flex;
+        width: 8.5in;
+        height: 5.5in;
+        flex-direction: column;
+        padding: 0.38in 0.45in 0.28in;
+        overflow: hidden;
+        background: #fff;
+        border-top: 0.12in solid #a63d00;
+      }
+
+      .print-copy {
+        display: none;
+      }
+
+      header {
+        padding-bottom: 0.16in;
+        border-bottom: 2px solid #131a21;
+      }
+
+      h1 {
+        margin: 0 0 0.04in;
+        font-size: 25pt;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+
+      .tagline {
+        margin: 0;
+        color: #7d2e00;
+        font-size: 11.5pt;
+        font-weight: 700;
+      }
+
+      .pitch {
+        padding: 0.16in 0;
+        border-bottom: 1px solid #66717a;
+      }
+
+      h2 {
+        margin: 0 0 0.06in;
+        color: #7d2e00;
+        font-size: 11pt;
+        line-height: 1.15;
+      }
+
+      p,
+      ul,
+      ol {
+        margin: 0;
+      }
+
+      .pitch p {
+        font-size: 9.5pt;
+        line-height: 1.38;
+      }
+
+      .sections {
+        display: grid;
+        flex: 1;
+        grid-template-columns: 1.15fr 1fr 1fr;
+        gap: 0.24in;
+        padding-top: 0.17in;
+      }
+
+      .sections section + section {
+        padding-left: 0.2in;
+        border-left: 1px solid #d5dbe0;
+      }
+
+      ul,
+      ol {
+        padding-left: 0.17in;
+        font-size: 8.6pt;
+        line-height: 1.32;
+      }
+
+      li {
+        margin-bottom: 0.055in;
+      }
+
+      code {
+        font-family: Consolas, Menlo, monospace;
+        font-size: 8pt;
+      }
+
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.2in;
+        margin-top: 0.12in;
+        padding-top: 0.1in;
+        border-top: 2px solid #131a21;
+        font-size: 8.5pt;
+      }
+
+      footer p {
+        font-weight: 700;
+      }
+
+      footer a {
+        color: #7d2e00;
+        font-weight: 700;
+        text-underline-offset: 2px;
+      }
+
+      .framework-link {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 8.5in;
+          height: 11in;
+          min-height: 0;
+          background: #fff;
+        }
+
+        body {
+          display: block;
+        }
+
+        .print-sheet {
+          width: 8.5in;
+          height: 11in;
+        }
+
+        .print-copy {
+          display: flex;
+        }
+
+        * {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+      }
+
+      @media screen and (max-width: 820px) {
+        body {
+          display: block;
+          background: #fff;
+        }
+
+        .handout {
+          width: 100%;
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .sections {
+          grid-template-columns: 1fr;
+        }
+
+        .sections section + section {
+          padding-top: 0.15in;
+          padding-left: 0;
+          border-top: 1px solid #d5dbe0;
+          border-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="print-sheet">
+      <article class="handout">
+      <header>
+        <h1>Open Source Accessibility Framework</h1>
+        <p class="tagline">
+          Integrate accessibility into your project, one practical step at a
+          time.
+        </p>
+      </header>
+
+      <section class="pitch" aria-labelledby="pitch">
+        <h2 id="pitch">30-Second Pitch</h2>
+        <p>
+          A phased framework for open source projects that want to improve
+          accessibility but do not know where to start. Projects work through
+          practical actions in four phases and use a public tracking issue to
+          share progress. It is not a certification, score, or ranking. It
+          supports steady, visible improvement.
+        </p>
+      </section>
+
+      <div class="sections">
+        <section aria-labelledby="phases">
+          <h2 id="phases">Four Phases</h2>
+          <ul>
+            <li>
+              <strong>Foundational:</strong> make the commitment visible and
+              track accessibility work.
+            </li>
+            <li>
+              <strong>Workflow:</strong> build accessibility into everyday
+              project decisions.
+            </li>
+            <li>
+              <strong>Testing:</strong> add repeatable automated and manual
+              checks.
+            </li>
+            <li>
+              <strong>Community:</strong> make collaboration accessible and
+              invite people to help.
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="start">
+          <h2 id="start">How to Start</h2>
+          <ol>
+            <li>
+              <strong>Register</strong> the project with the issue form
+              <ul>
+                <li>name</li>
+                <li>repo URL</li>
+                <li>GitHub handle(s)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Foundational phase:</strong>
+              <ul>
+                <li>add an <code>ACCESSIBILITY.md</code></li>
+                <li>create an <code>accessibility</code> label</li>
+              </ul>
+            </li>
+            <li>Complete other phases in the order that fits.</li>
+          </ol>
+        </section>
+
+        <section aria-labelledby="benefits">
+          <h2 id="benefits">Why Adopt It?</h2>
+          <ul>
+            <li>
+              Clear, achievable steps instead of an overwhelming checklist.
+            </li>
+            <li>
+              Fits existing practices such as labels, pull requests, and triage.
+            </li>
+            <li>Gives contributors well-defined ways to help.</li>
+            <li>Makes progress and remaining barriers visible.</li>
+            <li>
+              Supports shared learning, mentorship, and community feedback.
+            </li>
+          </ul>
+        </section>
+      </div>
+
+        <footer>
+          <p>
+            <strong>Sweepstakes:</strong> Register a project, then enter at
+            <a href="https://gh.io/github-accessibility-prize"
+              >gh.io/github-accessibility-prize</a
+            >
+            for a chance to win up to $200 in GitHub Shop credits.
+          </p>
+          <a class="framework-link" href="https://gh.io/accessibility-framework"
+            >gh.io/accessibility-framework</a
+          >
+        </footer>
+      </article>
+    </main>
+    <script>
+      const printSheet = document.querySelector(".print-sheet");
+      const handout = document.querySelector(".handout");
+
+      if (printSheet && handout) {
+        const printCopy = handout.cloneNode(true);
+        printCopy.classList.add("print-copy");
+        printCopy.setAttribute("aria-hidden", "true");
+        printCopy.setAttribute("inert", "");
+        printCopy.querySelectorAll("[id]").forEach((element) => {
+          element.removeAttribute("id");
+        });
+        printCopy.querySelectorAll("[aria-labelledby]").forEach((element) => {
+          element.removeAttribute("aria-labelledby");
+        });
+        printSheet.append(printCopy);
+      }
+    </script>
+  </body>
+</html>

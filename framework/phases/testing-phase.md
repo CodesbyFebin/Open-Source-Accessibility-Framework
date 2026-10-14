@@ -111,7 +111,6 @@ This action addresses common visual access barriers.
 #### Recommended Steps
 
 1. Identify key tasks and user journeys.
-1. Check for proper keyboard focus order, focus management, and adequate visual keyboard focus indicators.
 1. Check for quality of alternative text.
 1. Ensure that text such as page title, headings, input labels, and error messages are descriptive.
 1. Ensure that plain language is used instead of jargon and acronyms are spelled out on first reference.

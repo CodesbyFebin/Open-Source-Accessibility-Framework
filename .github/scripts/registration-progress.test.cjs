@@ -57,6 +57,7 @@ test("combines the issue author and listed points of contact", () => {
     buildPointOfContactValue("IssueAuthor", "_No response_"),
     "@IssueAuthor",
   );
+  assert.equal(buildPointOfContactValue("IssueAuthor", "---"), "@IssueAuthor");
   assert.throws(
     () => buildPointOfContactValue("IssueAuthor", "not/a/handle"),
     /not a valid GitHub handle/,

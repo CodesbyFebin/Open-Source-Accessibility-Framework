@@ -22,7 +22,7 @@ name: testing-phase
 description: "Implements all Testing Phase actions or selected actions by number, title, or ID, with bundled offline requirements."
 metadata:
   framework-phase-id: testing
-  framework-bundle-digest: "df32cbd6fc8f"
+  framework-bundle-digest: "b1fd16cfeb8b"
   framework-source-ref: main
   framework-source: "https://raw.githubusercontent.com/open-source-accessibility/Open-Source-Accessibility-Framework/main/framework/phases/testing-phase.md"
 ---
@@ -60,7 +60,12 @@ metadata:
 - **Cadence:** Ongoing
 - **Definition of done:**
     1. Key tasks have documented keyboard-only checks.
-    2. The checks confirm keyboard access, focus visibility, and logical focus order.
+    2. The checks confirm that all links and controls:
+       - Can be focused by keyboard
+       - Can be invoked by keyboard
+       - Provide a visible focus indicator
+       - Provide a logical focus order
+       - Have no keyboard traps
     3. Accessibility issues are fixed or tracked.
 
 ### Action 3: Perform a screen reader spot check for core flows
@@ -77,7 +82,7 @@ metadata:
 - **ID:** `perform-manual-accessibility-checks`
 - **Cadence:** Ongoing
 - **Definition of done:**
-    1. Relevant interfaces have documented zoom, resize, reflow, and contrast checks.
+    1. Relevant interfaces have documented checks for keyboard, descriptive language, plain language, zoom and reflow, and color contrast and usage.
     2. Information and functionality remain available at the tested settings.
     3. Accessibility issues are fixed or tracked.
 

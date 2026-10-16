@@ -1,6 +1,6 @@
 # Workflow Phase skill references
 
-- **Bundled content digest:** `f21d218c204c`
+- **Bundled content digest:** `b5c553feeaf6`
 - **Canonical phase:** [framework/phases/workflow-phase.md](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/workflow-phase.md)
 
 Load only the references needed for the user's selected actions.

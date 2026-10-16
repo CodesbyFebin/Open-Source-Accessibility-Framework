@@ -1,6 +1,6 @@
 # Testing Phase skill references
 
-- **Bundled content digest:** `df32cbd6fc8f`
+- **Bundled content digest:** `b1fd16cfeb8b`
 - **Canonical phase:** [framework/phases/testing-phase.md](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/blob/main/framework/phases/testing-phase.md)
 
 Load only the references needed for the user's selected actions.

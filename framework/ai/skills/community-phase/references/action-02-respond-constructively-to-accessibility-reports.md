@@ -17,7 +17,7 @@ This action builds trust with users and contributors; how a project responds to 
 ## Recommended Steps
 
 1. In the `ACCESSIBILITY.md`, document respectful and constructive guidance on how to respond.
-   - Review the guidance in the [how we respond example](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/ACCESSIBILITY.md#how-we-respond).
+    - Review the guidance in the [how we respond example](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/ACCESSIBILITY.md#how-we-respond).
 2. When needed, ask clarifying questions without dismissing or challenging the reporter’s experience.
 3. When practical, invite the reporter or another impacted user to validate the proposed fix.
 4. Document the outcome and next steps before closing the issue.

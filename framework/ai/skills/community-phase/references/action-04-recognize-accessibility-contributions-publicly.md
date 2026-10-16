@@ -16,10 +16,10 @@ Public recognition shows that accessibility work, including contributions beyond
 ## Recommended Steps
 
 1. Ask contributors how they want to be recognized and obtain their consent.
-   - Ask contributors how they would like to receive credit.
-   - Never disclose a contributor's disability, diagnosis, assistive technology use, or other personal information without permission.
-   - Do not tokenize contributors or present anyone as representing an entire disability community.
+    - Ask contributors how they would like to receive credit.
+    - Never disclose a contributor's disability, diagnosis, assistive technology use, or other personal information without permission.
+    - Do not tokenize contributors or present anyone as representing an entire disability community.
 2. Recognize accessibility contributions in release notes, community updates, contributor lists, discussions, project websites, or other appropriate channels.
-   - Include contributions beyond code, such as documentation, testing, research, design feedback, mentoring, translation, event support, and remediation guidance.
-   - Consider sharing contributions in the [Open Source Accessibility community (shoutout)](https://github.com/orgs/open-source-accessibility/discussions/new?category=shoutout).
-   - Present accessibility work as valuable project work, not charity or an exceptional favor.
+    - Include contributions beyond code, such as documentation, testing, research, design feedback, mentoring, translation, event support, and remediation guidance.
+    - Consider sharing contributions in the [Open Source Accessibility community (shoutout)](https://github.com/orgs/open-source-accessibility/discussions/new?category=shoutout).
+    - Present accessibility work as valuable project work, not charity or an exceptional favor.

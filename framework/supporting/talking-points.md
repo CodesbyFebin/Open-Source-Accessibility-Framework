@@ -63,7 +63,7 @@ Automated checks and AI-assisted recommendations can support this work, but they
 
 ## How to get started
 
-1. [Register the project](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml). Registration creates a public tracking issue.
+1. [Create a public issue to track the project's framework progress](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml).
 2. Complete the two Foundational actions:
    - [Create an ACCESSIBILITY.md](../phases/foundational-phase.md#1-create-an-accessibilitymd).
    - [Use an accessibility label to track relevant work](../phases/foundational-phase.md#2-use-an-accessibility-label-to-track-relevant-work).
@@ -117,6 +117,6 @@ They can help identify some issues, suggest changes, and support repeatable chec
 ## Useful links
 
 - [Open Source Accessibility Framework website](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/)
-- [Project registration form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml)
+- [Framework progress tracking form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml)
 - [Registered projects board](https://github.com/orgs/open-source-accessibility/projects/1)
 - [Framework repository](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework)

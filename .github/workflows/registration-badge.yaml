@@ -1,8 +1,8 @@
-name: Welcome new project registration
+name: Set up framework progress tracking
 
 on:
   issues:
-    types: [opened, reopened]
+    types: [opened, edited, reopened]
   workflow_dispatch:
     inputs:
       issue_number:
@@ -17,8 +17,14 @@ permissions:
 jobs:
   welcome-comment:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[Open Source Accessibility Framework]') }}
+    if: >-
+      ${{ github.event_name == 'workflow_dispatch' ||
+      ((github.event.action == 'opened' || github.event.action == 'reopened') &&
+      startsWith(github.event.issue.title, '[Open Source Accessibility Framework]')) }}
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Get project name and build badge
         id: project
         uses: actions/github-script@v8
@@ -39,6 +45,11 @@ jobs:
             }
 
             const body = issue.body || '';
+            const issueAuthor = issue.user?.login;
+            if (!issueAuthor) {
+              core.setFailed(`Unable to determine who opened issue #${issue.number}.`);
+              return;
+            }
 
             function getFieldValue(label) {
               const match = body.match(new RegExp(`###\\s*${label}\\s*\\n+([\\s\\S]*?)(?=\\n###\\s*|\\n*$)`, 'i'));
@@ -47,24 +58,34 @@ jobs:
             }
 
             const projectName = getFieldValue('Project name') || 'Project';
-            const maintainerPoc = getFieldValue('Maintainer / contributor point of contact')
-              || getFieldValue('Maintainer point of contact')
-              || '@maintainer';
             const issueUrl = issue.html_url;
             const participationHeading = '### Accessibility framework participation';
             const participationMessage = [
               participationHeading,
               'This project participates in the [Open Source Accessibility Framework](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework), demonstrating its commitment to ongoing accessibility improvement.',
               'This tracking issue documents the project’s progress as it adopts the framework and provides a public record of its accessibility commitments, completed work, and next steps.',
-              'To follow the progress of other participating projects, visit the [Open Source Accessibility Framework registered projects board](https://github.com/orgs/open-source-accessibility/projects/1).'
+              'To follow the progress of other participating projects, visit the [Open Source Accessibility Framework project board](https://github.com/orgs/open-source-accessibility/projects/1).'
             ].join('\n\n');
+            const { ensureProgressSection } =
+              require('./.github/scripts/registration-progress.cjs');
 
-            if (!body.includes(participationHeading)) {
+            let updatedBody = body;
+            if (!updatedBody.includes(participationHeading)) {
+              updatedBody = `${participationMessage}\n\n---\n\n${updatedBody}`;
+            }
+            try {
+              updatedBody = ensureProgressSection(updatedBody).body;
+            } catch (error) {
+              core.setFailed(`Unable to add framework progress: ${error.message}`);
+              return;
+            }
+
+            if (updatedBody !== body) {
               await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue.number,
-                body: `${participationMessage}\n\n---\n\n${body}`
+                body: updatedBody
               });
             }
 
@@ -72,7 +93,7 @@ jobs:
             const badgeUrl = `https://img.shields.io/badge/Accessibility%20Framework-${safeName}-F143AB?logo=github&logoColor=000000`;
 
             core.setOutput('project_name', projectName);
-            core.setOutput('maintainer_poc', maintainerPoc);
+            core.setOutput('issue_author', issueAuthor);
             core.setOutput('issue_url', issueUrl);
             core.setOutput('badge_url', badgeUrl);
             core.setOutput('badge_markdown', `[![OSAF: ${projectName}](${badgeUrl})](${issueUrl})`);
@@ -95,12 +116,11 @@ jobs:
               issue = context.payload.issue;
             }
 
-            const maintainerPoc = '${{ steps.project.outputs.maintainer_poc }}';
+            const issueAuthor = '${{ steps.project.outputs.issue_author }}';
             const badgeMarkdown = '${{ steps.project.outputs.badge_markdown }}';
-            const mention = maintainerPoc.startsWith('@') ? maintainerPoc : `@${maintainerPoc}`;
 
             const comment = [
-              `${mention}, your project is officially registered with the [Open Source Accessibility Framework](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework). We're so happy you joined us.`,
+              `@${issueAuthor}, your project is now tracking progress with the [Open Source Accessibility Framework](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework). We're so happy you joined us.`,
               'This issue will be used to track your progress and public accountability commitments. Please feel free to add this badge in your project repo to let others know about your progress:',
               badgeMarkdown,
               [
@@ -118,3 +138,51 @@ jobs:
               issue_number: issue.number,
               body: comment
             });
+
+  sync-progress-recap:
+    runs-on: ubuntu-latest
+    if: >-
+      ${{ github.event_name == 'issues' && github.event.action == 'edited' &&
+      startsWith(github.event.issue.title, '[Open Source Accessibility Framework]') }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Update framework progress recap
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const response = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            const issue = response.data;
+            const {
+              ensureProgressSection,
+              updateRecap
+            } = require('./.github/scripts/registration-progress.cjs');
+
+            let result;
+            try {
+              const progress = ensureProgressSection(issue.body || '');
+              result = updateRecap(progress.body);
+            } catch (error) {
+              core.setFailed(`Unable to update the framework progress recap: ${error.message}`);
+              return;
+            }
+
+            if (result.body === (issue.body || '')) {
+              core.info(`The framework progress recap for issue #${issue.number} is already current.`);
+              return;
+            }
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: result.body
+            });
+
+            core.info(`Updated the framework progress recap for issue #${issue.number}.`);

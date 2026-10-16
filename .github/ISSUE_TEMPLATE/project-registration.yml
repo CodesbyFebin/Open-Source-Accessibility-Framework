@@ -1,6 +1,7 @@
 ---
 name: "Open Source Accessibility Framework project registration"
 description: Sign up a project to participate in the Open Source Accessibility Framework.
+# Use this to publicly track your progress on implementing accessibility actions from the Accessibility Framework.
 # IMPORTANT: Do not add or change labels when creating an issue from this form.
 # Adding your own labels can break the workflow action trigger that runs follow-up automation.
 title: "[Open Source Accessibility Framework] <project name>"
@@ -40,12 +41,3 @@ body:
       placeholder: "https://example.com"
     validations:
       required: false
-
-  - type: input
-    id: maintainer-poc
-    attributes:
-      label: "Maintainer / contributor point of contact"
-      description: "Provide the GitHub handle of each maintainer or contributor who will be a point of contact."
-      placeholder: "@username or @username1 @username2"
-    validations:
-      required: true

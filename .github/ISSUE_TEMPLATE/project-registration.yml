@@ -41,3 +41,12 @@ body:
       placeholder: "https://example.com"
     validations:
       required: false
+
+  - type: input
+    id: maintainer-poc
+    attributes:
+      label: "Maintainer(s) / contributor(s) point of contact"
+      description: "Provide the GitHub handle of each maintainer or contributor who will be a point of contact."
+      placeholder: "@username or @username1 @username2"
+    validations:
+      required: false

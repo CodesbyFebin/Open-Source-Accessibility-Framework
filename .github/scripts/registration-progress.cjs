@@ -162,6 +162,8 @@ function renderRecap(counts) {
     RECAP_START,
     "## Recap",
     "",
+    "> **Automatically updated:** Do not edit this recap table. Check or uncheck actions below and save the issue; the table will update automatically.",
+    "",
     "| Phase | Actions Completed | Actions Left |",
     "| --- | ---: | ---: |",
     ...counts.map(
@@ -295,6 +297,38 @@ function calculatePhasePercentages(body) {
   );
 }
 
+function buildPointOfContactValue(issueAuthor, listedContacts = "") {
+  const handles = [issueAuthor];
+  const normalizedListedContacts = listedContacts.trim();
+
+  if (
+    normalizedListedContacts &&
+    !/^_No response_$/i.test(normalizedListedContacts)
+  ) {
+    handles.push(...normalizedListedContacts.split(/[\s,]+/).filter(Boolean));
+  }
+
+  const uniqueHandles = new Map();
+  for (const value of handles) {
+    const handle = value
+      .trim()
+      .replace(/^https?:\/\/github\.com\//i, "")
+      .replace(/^@/, "")
+      .replace(/\/$/, "");
+
+    if (!/^[a-z\d](?:[a-z\d-]{0,37}[a-z\d])?$/i.test(handle)) {
+      throw new Error(`"${value}" is not a valid GitHub handle.`);
+    }
+
+    const key = handle.toLowerCase();
+    if (!uniqueHandles.has(key)) {
+      uniqueHandles.set(key, handle);
+    }
+  }
+
+  return [...uniqueHandles.values()].map((handle) => `@${handle}`).join(" ");
+}
+
 function updateRecap(body) {
   const hasProgressStart = body.includes(PROGRESS_START);
   const hasProgressEnd = body.includes(PROGRESS_END);
@@ -330,6 +364,7 @@ module.exports = {
   PROGRESS_END,
   PROGRESS_START,
   buildProgressSection,
+  buildPointOfContactValue,
   calculateCounts,
   calculatePhasePercentages,
   ensureProgressSection,

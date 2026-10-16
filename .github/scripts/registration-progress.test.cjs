@@ -8,6 +8,7 @@ const {
   PROGRESS_END,
   PROGRESS_START,
   buildProgressSection,
+  buildPointOfContactValue,
   calculateCounts,
   calculatePhasePercentages,
   ensureProgressSection,
@@ -37,6 +38,28 @@ test("builds every phase action with an empty recap", () => {
   assert.match(progress, /\| Testing \| 0 \| 6 \|/);
   assert.match(progress, /\| Community \| 0 \| 6 \|/);
   assert.match(progress, /\| \*\*Total\*\* \| \*\*0\*\* \| \*\*24\*\* \|/);
+  assert.match(
+    progress,
+    /> \*\*Automatically updated:\*\* Do not edit this recap table\./,
+  );
+});
+
+test("combines the issue author and listed points of contact", () => {
+  assert.equal(
+    buildPointOfContactValue(
+      "IssueAuthor",
+      "@maintainer, https://github.com/Contributor/ @issueauthor",
+    ),
+    "@IssueAuthor @maintainer @Contributor",
+  );
+  assert.equal(
+    buildPointOfContactValue("IssueAuthor", "_No response_"),
+    "@IssueAuthor",
+  );
+  assert.throws(
+    () => buildPointOfContactValue("IssueAuthor", "not/a/handle"),
+    /not a valid GitHub handle/,
+  );
 });
 
 test("matches the canonical phase action headings", () => {

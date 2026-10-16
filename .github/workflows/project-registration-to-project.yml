@@ -14,6 +14,63 @@ permissions:
   issues: write
 
 jobs:
+  assign-issue-author:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[Open Source Accessibility Framework]') }}
+    steps:
+      - name: Assign issue author
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            let issue;
+            if (context.eventName === 'workflow_dispatch') {
+              const issueNumber = Number(context.payload.inputs?.issue_number);
+              if (!Number.isInteger(issueNumber) || issueNumber < 1) {
+                core.setFailed('Issue number must be a positive integer.');
+                return;
+              }
+              const response = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber
+              });
+              issue = response.data;
+            } else {
+              issue = context.payload.issue;
+            }
+
+            const issueAuthor = issue.user?.login?.trim();
+            if (!issueAuthor) {
+              core.setFailed(`Unable to determine who opened issue #${issue.number}.`);
+              return;
+            }
+
+            const currentAssignees = new Set(
+              (issue.assignees || []).map(assignee => assignee.login.toLowerCase())
+            );
+            if (currentAssignees.has(issueAuthor.toLowerCase())) {
+              core.info(`@${issueAuthor} is already assigned to issue #${issue.number}.`);
+              return;
+            }
+
+            const assignment = await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              assignees: [issueAuthor]
+            });
+            const assignedLogins = new Set(
+              (assignment.data.assignees || []).map(assignee => assignee.login.toLowerCase())
+            );
+
+            if (!assignedLogins.has(issueAuthor.toLowerCase())) {
+              core.setFailed(`Unable to assign @${issueAuthor} to issue #${issue.number}.`);
+              return;
+            }
+
+            core.info(`Assigned @${issueAuthor} to issue #${issue.number}.`);
+
   sync-project-fields:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[Open Source Accessibility Framework]') }}
@@ -47,8 +104,8 @@ jobs:
               'Project name': 'project-name',
               'Repository URL': 'project-repository',
               'Project URL': 'project-url',
-              'Maintainer / contributor POC': 'issue-author',
-              'Maintainer POC': 'issue-author',
+              'Maintainer / contributor POC': 'point-of-contact',
+              'Maintainer POC': 'point-of-contact',
               'Foundational Phase': 'foundational-phase',
               'Workflow Phase': 'workflow-phase',
               'Testing Phase': 'testing-phase',
@@ -74,16 +131,30 @@ jobs:
             }
 
             const {
+              buildPointOfContactValue,
               calculatePhasePercentages,
               ensureProgressSection
             } = require('./.github/scripts/registration-progress.cjs');
+            const pointOfContactLabels = [
+              'Maintainer(s) / contributor(s) point of contact',
+              'Maintainer / contributor point of contact',
+              'Maintainer point of contact'
+            ];
+            const listedPointsOfContact = pointOfContactLabels
+              .map(label => parseMarkdownField(body, label))
+              .find(value => value) || '';
+            let pointOfContact;
             let phasePercentages;
             try {
+              pointOfContact = buildPointOfContactValue(
+                issueAuthor,
+                listedPointsOfContact
+              );
               phasePercentages = calculatePhasePercentages(
                 ensureProgressSection(body).body
               );
             } catch (error) {
-              core.setFailed(`Unable to calculate framework phase progress: ${error.message}`);
+              core.setFailed(`Unable to map tracking issue fields: ${error.message}`);
               return;
             }
 
@@ -91,31 +162,9 @@ jobs:
               'project-name': parseMarkdownField(body, 'Project name'),
               'project-repository': parseMarkdownField(body, 'Project repository'),
               'project-url': parseMarkdownField(body, 'Project URL'),
-              'issue-author': `@${issueAuthor}`,
+              'point-of-contact': pointOfContact,
               ...phasePercentages
             };
-
-            const issueAuthorLogin = issueAuthor.toLowerCase();
-            const currentAssignees = new Set(
-              (issue.assignees || []).map(assignee => assignee.login.toLowerCase())
-            );
-
-            if (!currentAssignees.has(issueAuthorLogin)) {
-              const assignment = await github.rest.issues.addAssignees({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                assignees: [issueAuthor]
-              });
-              const assignedLogins = new Set(
-                (assignment.data.assignees || []).map(assignee => assignee.login.toLowerCase())
-              );
-
-              if (!assignedLogins.has(issueAuthorLogin)) {
-                core.setFailed(`Unable to assign @${issueAuthor} to issue #${issue.number}.`);
-                return;
-              }
-            }
 
             const projectOwner = 'open-source-accessibility';
             const projectNumber = 1;

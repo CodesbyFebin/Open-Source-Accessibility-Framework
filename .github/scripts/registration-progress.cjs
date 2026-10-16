@@ -281,8 +281,18 @@ function calculateCounts(body) {
       name: phase.name,
       completed,
       left: phase.actions.length - completed,
+      percentage: Math.round((completed / phase.actions.length) * 100),
     };
   });
+}
+
+function calculatePhasePercentages(body) {
+  return Object.fromEntries(
+    calculateCounts(body).map((phase) => [
+      `${phase.id}-phase`,
+      `${phase.percentage}%`,
+    ]),
+  );
 }
 
 function updateRecap(body) {
@@ -320,6 +330,8 @@ module.exports = {
   PROGRESS_END,
   PROGRESS_START,
   buildProgressSection,
+  calculateCounts,
+  calculatePhasePercentages,
   ensureProgressSection,
   updateRecap,
 };

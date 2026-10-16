@@ -8,6 +8,8 @@ const {
   PROGRESS_END,
   PROGRESS_START,
   buildProgressSection,
+  calculateCounts,
+  calculatePhasePercentages,
   ensureProgressSection,
   updateRecap,
 } = require("./registration-progress.cjs");
@@ -108,6 +110,34 @@ test("updates recap totals from saved checklist states", () => {
   assert.match(result.body, /- \[x\] \[Create an ACCESSIBILITY\.md\]/);
   assert.match(result.body, /### Project name\n\nExample project/);
   assert.match(result.body, /## Project Notes\n\nKeep this project-provided context\.$/);
+
+  assert.deepEqual(
+    calculateCounts(result.body).map(({ name, percentage }) => ({
+      name,
+      percentage,
+    })),
+    [
+      { name: "Foundational", percentage: 100 },
+      { name: "Workflow", percentage: 10 },
+      { name: "Testing", percentage: 17 },
+      { name: "Community", percentage: 0 },
+    ],
+  );
+  assert.deepEqual(calculatePhasePercentages(result.body), {
+    "foundational-phase": "100%",
+    "workflow-phase": "10%",
+    "testing-phase": "17%",
+    "community-phase": "0%",
+  });
+});
+
+test("maps one of two foundational actions to 50 percent", () => {
+  const body = checkAction(buildProgressSection(), "foundational", 1);
+
+  assert.equal(
+    calculatePhasePercentages(body)["foundational-phase"],
+    "50%",
+  );
 });
 
 test("does not update the issue again when recap totals are current", () => {

@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[Open Source Accessibility Framework]') }}
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Map issue form answers to project fields
         uses: actions/github-script@v7
         with:
@@ -45,7 +48,11 @@ jobs:
               'Repository URL': 'project-repository',
               'Project URL': 'project-url',
               'Maintainer / contributor POC': 'issue-author',
-              'Maintainer POC': 'issue-author'
+              'Maintainer POC': 'issue-author',
+              'Foundational Phase': 'foundational-phase',
+              'Workflow Phase': 'workflow-phase',
+              'Testing Phase': 'testing-phase',
+              'Community Phase': 'community-phase'
             };
 
             function parseMarkdownField(bodyText, label) {
@@ -66,11 +73,26 @@ jobs:
               return;
             }
 
+            const {
+              calculatePhasePercentages,
+              ensureProgressSection
+            } = require('./.github/scripts/registration-progress.cjs');
+            let phasePercentages;
+            try {
+              phasePercentages = calculatePhasePercentages(
+                ensureProgressSection(body).body
+              );
+            } catch (error) {
+              core.setFailed(`Unable to calculate framework phase progress: ${error.message}`);
+              return;
+            }
+
             const values = {
               'project-name': parseMarkdownField(body, 'Project name'),
               'project-repository': parseMarkdownField(body, 'Project repository'),
               'project-url': parseMarkdownField(body, 'Project URL'),
-              'issue-author': `@${issueAuthor}`
+              'issue-author': `@${issueAuthor}`,
+              ...phasePercentages
             };
 
             const issueAuthorLogin = issueAuthor.toLowerCase();
@@ -128,6 +150,19 @@ jobs:
                 .filter(field => field.__typename !== 'ProjectV2RepositoryField')
                 .map(field => [field.name, field.id])
             );
+            const requiredPhaseFields = [
+              'Foundational Phase',
+              'Workflow Phase',
+              'Testing Phase',
+              'Community Phase'
+            ];
+            const missingPhaseFields = requiredPhaseFields.filter(fieldName => !fieldIds[fieldName]);
+            if (missingPhaseFields.length > 0) {
+              core.setFailed(
+                `The project is missing required phase fields: ${missingPhaseFields.join(', ')}.`
+              );
+              return;
+            }
 
             const itemQuery = await github.graphql(`
               query($projectId: ID!) {

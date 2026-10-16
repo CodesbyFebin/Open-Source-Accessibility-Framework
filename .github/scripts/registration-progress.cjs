@@ -302,7 +302,7 @@ function buildPointOfContactValue(issueAuthor, listedContacts = "") {
 
   if (
     normalizedListedContacts &&
-    !/^_No response_$/i.test(normalizedListedContacts)
+    !/^(?:_No response_|---)$/i.test(normalizedListedContacts)
   ) {
     handles.push(...normalizedListedContacts.split(/[\s,]+/).filter(Boolean));
   }

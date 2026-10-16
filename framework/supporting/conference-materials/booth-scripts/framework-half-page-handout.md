@@ -32,6 +32,6 @@ A phased framework for open source projects that want to improve accessibility b
 - Makes progress and remaining barriers visible.
 - Supports shared learning, mentorship, and community feedback.
 
-**Sweepstakes:** Register a project, then enter at [gh.io/github-accessibility-prize](https://gh.io/github-accessibility-prize) for a chance to win up to $200 in GitHub Shop credits.
+**Sweepstakes:** Enter at [gh.io/github-accessibility-prize](https://gh.io/github-accessibility-prize) for a chance to win up to $200 in GitHub Shop credits.
 
 [gh.io/accessibility-framework](https://gh.io/accessibility-framework)

@@ -15,12 +15,12 @@ A phased framework for open source projects that want to improve accessibility b
 
 ## How Much Effort?
 
-| Phase | Actions | Effort |
-| --- | ---: | --- |
-| Foundational | 2 | Both quick |
-| Workflow | 10 | Quick to extended |
-| Testing | 6 | Moderate to extended |
-| Community | 6 | Quick to extended |
+| Phase        | Actions | Effort               |
+| ------------ | ------: | -------------------- |
+| Foundational |       2 | Both quick           |
+| Workflow     |      10 | Quick to extended    |
+| Testing      |       6 | Moderate to extended |
+| Community    |       6 | Quick to extended    |
 
 Quick = under 1 hour; Moderate = 1-3 hours; Extended = over 3 hours. Be honest: the full framework is sustained work, not a weekend project.
 
@@ -93,6 +93,6 @@ Public tracking issue, a spot on the registered projects board, a welcome messag
 - **Repo:** [github.com/open-source-accessibility/Open-Source-Accessibility-Framework](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework)
 - **Register:** [Registration form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) (also on the website homepage under "Getting started")
 - **Registered Projects:** [github.com/orgs/open-source-accessibility/projects/1](https://github.com/orgs/open-source-accessibility/projects/1)
-- **Sweepstakes:** Register a project, then enter at [gh.io/github-accessibility-prize](https://gh.io/github-accessibility-prize) for a chance to win up to $200 in GitHub Shop credits.
+- **Sweepstakes:** Enter at [gh.io/github-accessibility-prize](https://gh.io/github-accessibility-prize) for a chance to win up to $200 in GitHub Shop credits.
 - **More talking points:** Refer to the [framework talking points page](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/talking-points).
 - **Closer:** "Want to register your project right now? It takes a couple of minutes."

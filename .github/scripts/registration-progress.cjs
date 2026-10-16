@@ -162,13 +162,12 @@ function renderRecap(counts) {
     RECAP_START,
     "## Recap",
     "",
-    "> **Automatically updated:** Do not edit this recap table. Check or uncheck actions below and save the issue; the table will update automatically.",
+    "> **Automatically updated:** Do not edit this recap table. Check or uncheck actions in the Framework Progress section and the table will update automatically.",
     "",
     "| Phase | Actions Completed | Actions Left |",
     "| --- | ---: | ---: |",
     ...counts.map(
-      (phase) =>
-        `| ${phase.name} | ${phase.completed} | ${phase.left} |`,
+      (phase) => `| ${phase.name} | ${phase.completed} | ${phase.left} |`,
     ),
     `| **Total** | **${completedTotal}** | **${leftTotal}** |`,
     RECAP_END,
@@ -303,7 +302,7 @@ function buildPointOfContactValue(issueAuthor, listedContacts = "") {
 
   if (
     normalizedListedContacts &&
-    !/^_No response_$/i.test(normalizedListedContacts)
+    !/^(?:_No response_|---)$/i.test(normalizedListedContacts)
   ) {
     handles.push(...normalizedListedContacts.split(/[\s,]+/).filter(Boolean));
   }
@@ -327,6 +326,27 @@ function buildPointOfContactValue(issueAuthor, listedContacts = "") {
   }
 
   return [...uniqueHandles.values()].map((handle) => `@${handle}`).join(" ");
+}
+
+function parseTrackingIssueField(body, label) {
+  const escapedLabel = escapeRegExp(label);
+  const match = body.match(
+    new RegExp(
+      `^###[ \\t]+${escapedLabel}[ \\t]*\\r?\\n([\\s\\S]*?)(?=^###[ \\t]+|^---[ \\t]*$|^${escapeRegExp(PROGRESS_START)}[ \\t]*$|(?![\\s\\S]))`,
+      "im",
+    ),
+  );
+
+  if (!match) {
+    return "";
+  }
+
+  return match[1]
+    .trim()
+    .replace(/^\s*[-*]\s*/, "")
+    .replace(/\n+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function updateRecap(body) {
@@ -368,5 +388,6 @@ module.exports = {
   calculateCounts,
   calculatePhasePercentages,
   ensureProgressSection,
+  parseTrackingIssueField,
   updateRecap,
 };

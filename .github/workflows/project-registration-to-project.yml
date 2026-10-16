@@ -1,4 +1,4 @@
-name: Sync project registration to GitHub Project
+name: Sync framework progress to GitHub Project
 
 on:
   issues:

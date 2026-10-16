@@ -15,7 +15,7 @@ A phased framework for open source projects that want to improve accessibility b
 
 ## How to Start
 
-1. **Register** the project with the issue form:
+1. **Create a public framework progress issue** with the tracking form:
    - name
    - repo URL
    - GitHub handle(s)

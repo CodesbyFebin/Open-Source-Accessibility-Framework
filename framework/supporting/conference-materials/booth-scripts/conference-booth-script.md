@@ -4,8 +4,8 @@ A guide for volunteers staffing a booth for the Open Source Accessibility Framew
 
 ## Before your shift
 
-- Open the [README](../../README.md) and the [registered projects board](https://github.com/orgs/open-source-accessibility/projects/1) on the booth device so you can show real examples.
-- Have a QR code or short link to the repository and the registration form ready (see [Sign-up links](#sign-up-links)).
+- Open the [README](../../README.md) and the [project board](https://github.com/orgs/open-source-accessibility/projects/1) on the booth device so you can show real examples.
+- Have a QR code or short link to the repository and the progress tracking form ready (see [Tracking links](#tracking-links)).
 - Know the one sentence you want every visitor to leave with: **"Start with two quick actions, then keep going at your own pace."**
 
 ## The pitch
@@ -16,7 +16,7 @@ A guide for volunteers staffing a booth for the Open Source Accessibility Framew
 
 ### 30-second version
 
-> It's a phased framework for open source projects that want to improve accessibility but don't know where to start. Instead of trying to fix everything at once, you work through practical actions in four phases: foundational, workflow, testing, and community. You register your project, and the framework gives you a public tracking issue so users and contributors can see your progress. It's not a certification or a score. It's about steady, visible improvement.
+> It's a phased framework for open source projects that want to improve accessibility but don't know where to start. Instead of trying to fix everything at once, you work through practical actions in four phases: foundational, workflow, testing, and community. You create a public tracking issue so users and contributors can see your progress. It's not a certification or a score. It's about steady, visible improvement.
 
 ### 2-minute version
 
@@ -26,9 +26,9 @@ A guide for volunteers staffing a booth for the Open Source Accessibility Framew
    - **Workflow:** build accessibility into docs, design, triage, pull requests, ownership, and dependency decisions.
    - **Testing:** add repeatable automated and manual checks.
    - **Community:** make collaboration accessible, respond to feedback, share progress, and invite people to help.
-3. **How you start.** "Register your project with a short form. Then do two quick things: add an `ACCESSIBILITY.md` and create an `accessibility` label. Each takes under an hour."
-4. **What you get.** "A public tracking issue, a place on the registered projects board alongside other projects, and a community to share experience, ask for help, and find mentors."
-5. **The ask.** "Want to register your project, or help a project that has?"
+3. **How you start.** "Create a public framework progress issue with a short form. Then do two quick things: add an `ACCESSIBILITY.md` and create an `accessibility` label. Each takes under an hour."
+4. **What you get.** "A public tracking issue, a place on the project board alongside other projects, and a community to share experience, ask for help, and find mentors."
+5. **The ask.** "Want to track your project's progress, or help a participating project?"
 
 ## Key messages
 
@@ -67,27 +67,26 @@ Talking points:
 - "You can do the remaining phases in whatever order suits your project."
 - Be honest: the full framework is a sustained effort. Don't promise it's a weekend project.
 
-## How to get started and sign up
+## How to Start Tracking Progress
 
-1. **Register your project** with the [project registration issue form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml). It asks for:
+1. **Create a public tracking issue** with the [framework progress tracking form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml). It asks for:
    - project name
    - repository URL
    - project website URL (optional)
-   - the GitHub handle of each maintainer or contributor who will be a point of contact
 2. **Complete the [Foundational phase](../phases/foundational-phase.md):**
    - [Create an ACCESSIBILITY.md](../phases/foundational-phase.md#1-create-an-accessibilitymd)
    - [Use an accessibility label to track relevant work](../phases/foundational-phase.md#2-use-an-accessibility-label-to-track-relevant-work)
 3. **Work through the other phases** in the order that fits, updating your tracking issue as you finish each action.
 
-Tell visitors that registration creates a **public** tracking issue. The registration automation adds the project to the registered projects board and posts a welcome comment with onboarding guidance and a badge.
+Tell visitors that the form creates a **public** tracking issue. The tracking automation adds the project to the project board and posts a welcome comment with onboarding guidance and a badge.
 
-### Sign-up links
+### Tracking Links
 
 Fill these in before the event.
 
 - Website: `gh.io/accessibility-framework`
 - QR code location: `banner`
-- Registration form: `on the website homepage, under "Getting started"`
+- Progress tracking form: `on the website homepage, under "Getting started"`
 
 ## Quick answers to common questions
 
@@ -101,7 +100,7 @@ No. It's open source and runs on GitHub. (Don't speak to anything beyond that, s
 Yes. Start with the two Foundational actions, each under an hour. Projects adapt the actions to their size and can go at their own pace.
 
 **We don't have any accessibility expertise.**
-That's a main reason the framework exists. Each action explains why it matters and gives recommended steps. Registering also connects you with other projects and offers chances to ask for help and find mentorship. Actions such as tagging issues where you need expert help are designed for this.
+That's a main reason the framework exists. Each action explains why it matters and gives recommended steps. Public progress tracking also connects you with other projects and offers chances to ask for help and find mentorship. Actions such as tagging issues where you need expert help are designed for this.
 
 **Do we have to finish everything?**
 No. You work incrementally. The framework doesn't gate participation on completing all phases. Update your tracking issue as you finish actions.
@@ -110,10 +109,10 @@ No. You work incrementally. The framework doesn't gate participation on completi
 Public accountability is the model. Showing progress and remaining barriers builds user trust and invites help. It's about transparency of effort, not claims of perfection. You can also state limitations openly in your `ACCESSIBILITY.md`.
 
 **What do we need to do on day one?**
-Register the project, add an `ACCESSIBILITY.md` with a short statement of why accessibility matters, and create an `accessibility` label.
+Create a public tracking issue, add an `ACCESSIBILITY.md` with a short statement of why accessibility matters, and create an `accessibility` label.
 
 **Does it work for any kind of project: libraries, CLIs, websites, apps?**
-The framework is written to be adapted to different projects. Some actions, such as designing accessible interfaces, matter most where there's a user interface, but the phases apply broadly. Visitors with unusual projects can register and adapt the actions.
+The framework is written to be adapted to different projects. Some actions, such as designing accessible interfaces, matter most where there's a user interface, but the phases apply broadly. Visitors with unusual projects can track their progress and adapt the actions.
 
 **What does automated testing involve?**
 The Testing phase starts with adding at least one automated accessibility check. It also includes keyboard-only smoke tests, screen reader spot checks, manual checks, and documentation checks. It's explicit that automation alone isn't enough.
@@ -121,8 +120,8 @@ The Testing phase starts with adding at least one automated accessibility check.
 **Can AI help us implement it?**
 Yes. There are [phase skills](../ai/guide.md#framework-skills) for AI agents covering each phase. You can ask for a whole phase or selected actions, for example "Use the Foundational Phase skill to create an ACCESSIBILITY.md". The guidance is clear that AI output is a suggestion and needs review, testing, and ideally feedback from people with disabilities.
 
-**What do we get from registering?**
-A public tracking issue, a place on the registered projects board, a welcome message with a badge, and opportunities to learn from and help other projects. Ask visitors to look at the board with you.
+**What do we get from tracking our progress?**
+A public tracking issue, a place on the project board, a welcome message with a badge, and opportunities to learn from and help other projects. Ask visitors to look at the board with you.
 
 **I'm not a maintainer. Can I still help?**
 Yes. Look for issues labeled `accessibility` with `good first issue` (beginner-friendly) or `accessibility` with `help wanted` (projects actively seeking support) on participating projects. You can also improve the framework by opening an issue or pull request in the repository.
@@ -142,7 +141,7 @@ It's maintained in the open in the repository, and maintenance relies on GitHub-
 
 ## Conversation closers
 
-- "Can I help you register your project right now? It takes a couple of minutes on my laptop."
-- "Scan this QR code to open the registration form, or the repository if you'd like to read more first."
+- "Can I help you create a public issue to track your project's progress? It takes a couple of minutes on my laptop."
+- "Scan this QR code to open the progress tracking form, or the repository if you'd like to read more first."
 - "If you're not a maintainer, would you share this with the maintainers of a project you use?"
 - "Want to see which projects are already participating?" (Show the board.)

@@ -1,6 +1,6 @@
 ---
-name: "Open Source Accessibility Framework project registration"
-description: Sign up a project to participate in the Open Source Accessibility Framework.
+name: "Track your Open Source Accessibility Framework progress"
+description: Create a public issue to track a project's progress through the framework.
 # Use this to publicly track your progress on implementing accessibility actions from the Accessibility Framework.
 # IMPORTANT: Do not add or change labels when creating an issue from this form.
 # Adding your own labels can break the workflow action trigger that runs follow-up automation.
@@ -19,7 +19,7 @@ body:
     id: project-name
     attributes:
       label: "Project name"
-      description: "What is the name of the project signing up for the framework?"
+      description: "What is the name of the project tracking its framework progress?"
       placeholder: "Example: Accessible component library"
     validations:
       required: true

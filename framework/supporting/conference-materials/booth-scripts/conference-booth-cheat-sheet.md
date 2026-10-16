@@ -4,7 +4,7 @@
 
 ## 30-Second Pitch
 
-A phased framework for open source projects that want to improve accessibility but don't know where to start. You work through practical actions in four phases: foundational, workflow, testing, and community. You register your project and get a public tracking issue, so users and contributors can see your progress. It's **not** a certification, score, or ranking. It's steady, visible improvement.
+A phased framework for open source projects that want to improve accessibility but don't know where to start. You work through practical actions in four phases: foundational, workflow, testing, and community. You create a public tracking issue so users and contributors can see your progress. It's **not** a certification, score, or ranking. It's steady, visible improvement.
 
 ## Four Phases
 
@@ -26,10 +26,10 @@ Quick = under 1 hour; Moderate = 1-3 hours; Extended = over 3 hours. Be honest: 
 
 ## How to Start
 
-1. **Register** the project with the issue form:
+1. **Create a public framework progress issue** with the tracking form:
    - name
    - repo URL
-   - maintainer or contributor GitHub handle(s)
+   - project website URL (optional)
 2. **Foundational phase:**
    - add an `ACCESSIBILITY.md`
    - create an `accessibility` label
@@ -55,7 +55,7 @@ It's open source and runs on GitHub. Don't speak to funding or services.
 
 ### We're Tiny / No Expertise
 
-Start with two quick Foundational actions. Each action explains why it matters and the steps. Registering connects you with other projects.
+Start with two quick Foundational actions. Each action explains why it matters and the steps. Public progress tracking connects you with other projects.
 
 ### Must We Finish Everything?
 
@@ -67,7 +67,7 @@ Public accountability builds trust and invites help. It's transparency of effort
 
 ### Day One?
 
-Register, add `ACCESSIBILITY.md`, create the `accessibility` label.
+Create a tracking issue, add `ACCESSIBILITY.md`, and create the `accessibility` label.
 
 ### Can AI Help?
 
@@ -79,7 +79,7 @@ Find issues labeled `accessibility` + `good first issue` or `help wanted` on par
 
 ### What Do We Get?
 
-Public tracking issue, a spot on the registered projects board, a welcome message with a badge, and community.
+Public progress tracking, a spot on the project board, a welcome message with a badge, and community.
 
 ## Don't
 
@@ -91,8 +91,8 @@ Public tracking issue, a spot on the registered projects board, a welcome messag
 
 - **Website:** [gh.io/accessibility-framework](https://gh.io/accessibility-framework)
 - **Repo:** [github.com/open-source-accessibility/Open-Source-Accessibility-Framework](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework)
-- **Register:** [Registration form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) (also on the website homepage under "Getting started")
-- **Registered Projects:** [github.com/orgs/open-source-accessibility/projects/1](https://github.com/orgs/open-source-accessibility/projects/1)
+- **Track Progress:** [Framework progress tracking form](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/new?template=project-registration.yml) (also on the website homepage under "Getting started")
+- **Project Board:** [github.com/orgs/open-source-accessibility/projects/1](https://github.com/orgs/open-source-accessibility/projects/1)
 - **Sweepstakes:** Enter at [gh.io/github-accessibility-prize](https://gh.io/github-accessibility-prize) for a chance to win up to $200 in GitHub Shop credits.
 - **More talking points:** Refer to the [framework talking points page](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/talking-points).
-- **Closer:** "Want to register your project right now? It takes a couple of minutes."
+- **Closer:** "Want to create a public issue to track your project's progress? It takes a couple of minutes."

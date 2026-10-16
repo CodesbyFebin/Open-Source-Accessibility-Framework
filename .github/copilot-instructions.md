@@ -17,7 +17,7 @@ This repository contains the Open Source Accessibility Framework and its compani
 - `framework/maintainers/` contains operational guidance for framework maintainers.
 - `framework/ai/` contains guidance for responsible AI-assisted accessibility work.
 - `website/` is a Vue 3, TypeScript, Vite, and Vitest application that renders Markdown from `README.md` and `framework/`.
-- `.github/ISSUE_TEMPLATE/` and `.github/workflows/` implement project registration and related automation.
+- `.github/ISSUE_TEMPLATE/` and `.github/workflows/` implement public framework progress tracking and related automation.
 
 ## Documentation changes
 
@@ -57,7 +57,7 @@ This repository contains the Open Source Accessibility Framework and its compani
 - Preserve least-privilege GitHub Actions permissions.
 - Treat issue-form field IDs, labels, option text, issue labels, and title prefixes as interfaces consumed by workflows.
 - Before changing any of those values, search `.github/workflows/` for parsers, conditions, field mappings, and exact string matches, then update and test all coupled behavior.
-- Do not add or change labels on the project registration issue form unless the registration workflow is intentionally updated with it.
+- Do not add or change labels on the framework progress tracking issue form unless the tracking workflow is intentionally updated with it.
 - Validate workflow inputs before using them and report failures explicitly.
 
 ## Validation

@@ -12,6 +12,7 @@ const {
   calculateCounts,
   calculatePhasePercentages,
   ensureProgressSection,
+  parseTrackingIssueField,
   updateRecap,
 } = require("./registration-progress.cjs");
 
@@ -48,9 +49,9 @@ test("combines the issue author and listed points of contact", () => {
   assert.equal(
     buildPointOfContactValue(
       "IssueAuthor",
-      "@maintainer, https://github.com/Contributor/ @issueauthor",
+      "PlainHandle, @maintainer, https://github.com/Contributor/ @issueauthor",
     ),
-    "@IssueAuthor @maintainer @Contributor",
+    "@IssueAuthor @PlainHandle @maintainer @Contributor",
   );
   assert.equal(
     buildPointOfContactValue("IssueAuthor", "_No response_"),
@@ -60,6 +61,26 @@ test("combines the issue author and listed points of contact", () => {
   assert.throws(
     () => buildPointOfContactValue("IssueAuthor", "not/a/handle"),
     /not a valid GitHub handle/,
+  );
+});
+
+test("stops the final issue-form field before generated progress content", () => {
+  const body = [
+    "### Maintainer(s) / contributor(s) point of contact",
+    "",
+    "@mlama007 @weboverhauls",
+    "",
+    "---",
+    "",
+    buildProgressSection(),
+  ].join("\n");
+
+  assert.equal(
+    parseTrackingIssueField(
+      body,
+      "Maintainer(s) / contributor(s) point of contact",
+    ),
+    "@mlama007 @weboverhauls",
   );
 });
 

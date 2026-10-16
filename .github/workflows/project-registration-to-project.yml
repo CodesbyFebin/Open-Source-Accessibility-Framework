@@ -112,18 +112,6 @@ jobs:
               'Community Phase': 'community-phase'
             };
 
-            function parseMarkdownField(bodyText, label) {
-              const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-              const match = bodyText.match(
-                new RegExp(
-                  `^###[ \\t]+${escapedLabel}[ \\t]*\\r?\\n([\\s\\S]*?)(?=^###[ \\t]+|(?![\\s\\S]))`,
-                  'im'
-                )
-              );
-              if (!match) return '';
-              return match[1].trim().replace(/^\s*[-*]\s*/, '').replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
-            }
-
             const issueAuthor = issue.user?.login?.trim();
             if (!issueAuthor || !/^[a-z\d](?:[a-z\d-]{0,37}[a-z\d])?$/i.test(issueAuthor)) {
               core.setFailed(`Unable to determine a valid GitHub username for the author of issue #${issue.number}.`);
@@ -133,7 +121,8 @@ jobs:
             const {
               buildPointOfContactValue,
               calculatePhasePercentages,
-              ensureProgressSection
+              ensureProgressSection,
+              parseTrackingIssueField
             } = require('./.github/scripts/registration-progress.cjs');
             const pointOfContactLabels = [
               'Maintainer(s) / contributor(s) point of contact',
@@ -141,7 +130,7 @@ jobs:
               'Maintainer point of contact'
             ];
             const listedPointsOfContact = pointOfContactLabels
-              .map(label => parseMarkdownField(body, label))
+              .map(label => parseTrackingIssueField(body, label))
               .find(value => value) || '';
             let pointOfContact;
             let phasePercentages;
@@ -159,9 +148,9 @@ jobs:
             }
 
             const values = {
-              'project-name': parseMarkdownField(body, 'Project name'),
-              'project-repository': parseMarkdownField(body, 'Project repository'),
-              'project-url': parseMarkdownField(body, 'Project URL'),
+              'project-name': parseTrackingIssueField(body, 'Project name'),
+              'project-repository': parseTrackingIssueField(body, 'Project repository'),
+              'project-url': parseTrackingIssueField(body, 'Project URL'),
               'point-of-contact': pointOfContact,
               ...phasePercentages
             };

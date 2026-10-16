@@ -17,16 +17,16 @@ Accessible tools and processes allow more people to share expertise, influence d
 
 ## Recommended Steps
 
-1. Identify accessible to participate.
-   - Create clearly scoped accessibility issues using labels such as `accessibility` with `good first issue` for beginner-friendly work and `accessibility` with `help wanted` where projects are actively seeking support.
-   - Make meeting agendas and accessible materials available in advance when practical.
-   - Explicitly document non-code contribution opportunities.
-   - Provide asynchronous options such as issues, discussions, mailing lists, meeting notes, transcripts, or summaries.
-   - Provide captions and describe meaningful visual information during meetings and presentations when practical.
-   - Avoid requiring camera use, spoken participation, or a single communication channel unless the project has a compelling need for this.
+1. Identify accessible ways and means to participate.
+    - Create clearly scoped accessibility issues using labels such as `accessibility` with `good first issue` for beginner-friendly work and `accessibility` with `help wanted` where projects are actively seeking support.
+    - Make meeting agendas and accessible materials available in advance when practical.
+    - Explicitly document non-code contribution opportunities.
+    - Provide asynchronous options such as issues, discussions, mailing lists, meeting notes, transcripts, or summaries.
+    - Provide captions and describe meaningful visual information during meetings and presentations when practical.
+    - Avoid requiring camera use, spoken participation, or a single communication channel unless the project has a compelling need for this.
 2. Review collaboration tools for accessibility, addressing barriers or providing alternatives.
-   - Check for keyboard access, screen reader support, captions, transcripts, accessible chat, accessible documents, magnification and reflow support, and understandable interaction patterns.
+    - Check for keyboard access, screen reader support, captions, transcripts, accessible chat, accessible documents, magnification and reflow support, and understandable interaction patterns.
 3. Adopt and enforce a code of conduct. GitHub provides guidance for [adding a code of conduct to a project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project).
-   - Ensure disability-related harassment, dismissive behavior, personal attacks, and disclosure of private information get handled consistently via the project's community standards.
+    - Ensure disability-related harassment, dismissive behavior, personal attacks, and disclosure of private information get handled consistently via the project's community standards.
 4. Provide a way to request accommodations without requiring unnecessary public disclosure.
-   - Identify an accessibility or accommodation contact for significant community meetings and events.
+    - Identify an accessibility or accommodation contact for significant community meetings and events.

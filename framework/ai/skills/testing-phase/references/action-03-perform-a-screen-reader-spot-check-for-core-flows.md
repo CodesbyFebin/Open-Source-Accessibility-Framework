@@ -17,7 +17,7 @@ This action validates real usability beyond automation.
 ## Recommended Steps
 
 1. Identify key tasks and user journeys.
-2. Select a supported screen reader and browser combination (such as Windows + [NVDA](https://www.nvaccess.org/download/) and MacOS + VoiceOver).
+2. Select a supported screen reader and browser combination such as Windows + [NVDA](https://www.nvaccess.org/download/), Windows + JAWS, and MacOS + VoiceOver. On mobile, test Android with Talkback and iOS with VoiceOver.
 3. Test the flows using a screen reader.
    - Refer to the [testing spot-check screen reader examples](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/ACCESSIBILITY.md#contributor-expectations).
 4. Fix accessibility issues or track them.

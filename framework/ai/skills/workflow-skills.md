@@ -22,7 +22,7 @@ name: workflow-phase
 description: "Implements all Workflow Phase actions or selected actions by number, title, or ID, with bundled offline requirements."
 metadata:
   framework-phase-id: workflow
-  framework-bundle-digest: "f21d218c204c"
+  framework-bundle-digest: "b5c553feeaf6"
   framework-source-ref: main
   framework-source: "https://raw.githubusercontent.com/open-source-accessibility/Open-Source-Accessibility-Framework/main/framework/phases/workflow-phase.md"
 ---

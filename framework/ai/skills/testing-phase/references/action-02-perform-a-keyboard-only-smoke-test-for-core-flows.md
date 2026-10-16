@@ -11,7 +11,12 @@ This action covers a high-impact baseline.
 ## Definition of Done
 
 1. Key tasks have documented keyboard-only checks.
-2. The checks confirm keyboard access, focus visibility, and logical focus order.
+2. The checks confirm that all links and controls:
+   - Can be focused by keyboard
+   - Can be invoked by keyboard
+   - Provide a visible focus indicator
+   - Provide a logical focus order
+   - Have no keyboard traps
 3. Accessibility issues are fixed or tracked.
 
 ## Recommended Steps

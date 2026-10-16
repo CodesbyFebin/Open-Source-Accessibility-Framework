@@ -17,23 +17,23 @@ Sharing accessibility resources, solutions, and lessons learned helps other proj
 ## Recommended Steps
 
 1. Identify project materials that could help other teams, such as:
-   - accessibility issue templates
-   - pull request checklists
-   - test procedures
-   - accessible component examples
-   - coding patterns
-   - accessibility statements
-   - meeting accessibility checklists
-   - contributor guidance
-   - usability-test tasks
-   - community feedback templates
-   - testing scripts
-   - remediation examples
-   - lessons learned
+    - accessibility issue templates
+    - pull request checklists
+    - test procedures
+    - accessible component examples
+    - coding patterns
+    - accessibility statements
+    - meeting accessibility checklists
+    - contributor guidance
+    - usability-test tasks
+    - community feedback templates
+    - testing scripts
+    - remediation examples
+    - lessons learned
 2. Review the materials to ensure they are clear, accessible, and easy to use.
-   - Explain the problem each resource intends to solve.
-   - Include prerequisites, limitations, known tradeoffs, and situations where the resource may not apply.
+    - Explain the problem each resource intends to solve.
+    - Include prerequisites, limitations, known tradeoffs, and situations where the resource may not apply.
 3. Publish them in a discoverable repository location or community channel.
-   - Consider sharing your work in the [Open Source Accessibility community show-and-tell](https://github.com/orgs/open-source-accessibility/discussions/new?category=show-and-tell).
-   - Review the [sharing resources and solutions](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/resources/community/community.md#sharing-resources-and-solutions) guidance.
+    - Consider sharing your work in the [Open Source Accessibility community show-and-tell](https://github.com/orgs/open-source-accessibility/discussions/new?category=show-and-tell).
+    - Review the [sharing resources and solutions](https://github.com/open-source-accessibility/accessibility-toolkit/blob/main/resources/community/community.md#sharing-resources-and-solutions) guidance.
 4. Keep shared resources current as standards, tools, and community practices evolve.

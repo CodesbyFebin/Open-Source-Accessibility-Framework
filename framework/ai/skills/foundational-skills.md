@@ -22,7 +22,7 @@ name: foundational-phase
 description: "Implements all Foundational Phase actions or selected actions by number, title, or ID, with bundled offline requirements."
 metadata:
   framework-phase-id: foundational
-  framework-bundle-digest: "f2c741af5042"
+  framework-bundle-digest: "d6f531edfd4e"
   framework-source-ref: main
   framework-source: "https://raw.githubusercontent.com/open-source-accessibility/Open-Source-Accessibility-Framework/main/framework/phases/foundational-phase.md"
 ---
